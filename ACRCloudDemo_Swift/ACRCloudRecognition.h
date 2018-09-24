@@ -13,24 +13,51 @@
 
 -(id)initWithConfig:(ACRCloudConfig*)config;
 
+-(void)startPreRecord:(NSInteger)recordTime;
+-(void)stopPreRecord;
+
 -(void)startRecordRec;
 
 -(void)stopRecordRec;
 
-//"RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz"
+-(void)stopRecordAndRec;
+
+//only support RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
 -(NSString*)recognize:(char*)buffer len:(int)len;
 
-//"RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz"
-+(NSData*)get_fingerprint:(char*)pcm len:(int)len;
+//only support RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
+-(NSString*)recognize:(NSData*)pcm_data;
 
-//"RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit
+-(void)recognize_fp:(NSData*)fingerprint
+        resultBlock:(ACRCloudResultBlock)resultBlock;
+
+-(NSString*)recognize_fp:(NSData*)fingerprint;
+
++(NSData*)get_fingerprint:(char*)pcm len:(int)len;
++(NSData*)get_fingerprint:(NSData*)pcm;
+
 +(NSData*) get_fingerprint:(char*)pcm
-                       len:(unsigned)len
+                     len:(unsigned)len
                 sampleRate:(unsigned)sampleRate
                   nChannel:(short)nChannel;
++(NSData*)get_fingerprint:(NSData*)pcm
+               sampleRate:(unsigned)sampleRate
+                 nChannel:(short)nChannel;
+
+//convert pcm/wav to mono 8000HZ
++(NSData*) resample:(NSData*)pcm
+         sampleRate:(unsigned)sampleRate
+           nChannel:(short)nChannel;
 
 +(NSData*) resample:(char*)pcm
                 len:(unsigned)len
          sampleRate:(unsigned)sampleRate
            nChannel:(short)nChannel;
+
++(NSData*) resample_bit32:(char*)pcm
+                      len:(unsigned)bytes
+               sampleRate:(unsigned)sampleRate
+                 nChannel:(short)nChannel
+                  isFloat:(bool)isFloat;
+
 @end

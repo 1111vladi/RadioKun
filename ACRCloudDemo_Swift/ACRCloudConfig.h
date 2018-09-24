@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    rec_mode_remote = 0,
-    rec_mode_local = 1
+    rec_mode_remote = 0,    //query remote db
+    rec_mode_local = 1,     //query local db
+    rec_mode_both = 2,      // query both remote db and local db
+    rec_mode_advance_remote = 3  //query remote db and saving recording fingerprint when offline.
 }ACRCloudRecMode;
 
 typedef enum {
@@ -24,13 +26,14 @@ typedef enum {
 typedef enum {
     http_resume_type_error = -1,
     http_resume_type_resume = 0,
-    http_resume_type_restart = 1
+    http_resume_type_restart = 1,
+    http_resume_type_success = 2,
 } HTTPResumeType;
 
 #define ACRCLOUD_VERSION @"1.0"
-#define MAX_REC_DATA 240000
 
 typedef void(^ACRCloudResultBlock)(NSString *result, ACRCloudResultType resMode);
+typedef void(^ACRCloudResultWithFpBlock)(NSString *result, NSData *fingerprint);
 
 typedef void(^ACRCloudStateBlock)(NSString *state);
 
@@ -43,25 +46,33 @@ typedef void(^ACRCloudVolumeBlock)(float volume);
     NSString *_host;
     NSString *_audioType;
     NSString *_homedir;
+    NSString *_uuid;
+    NSString *_protocal;
     NSDictionary *_params;
     ACRCloudRecMode _recMode;
-    int _requestTimeout;
+    NSInteger _requestTimeout;
+    NSInteger _prerecorderTime;
     ACRCloudResultBlock _resultBlock;
     ACRCloudStateBlock _stateBlock;
     ACRCloudVolumeBlock _volumeBlock;
+    ACRCloudResultWithFpBlock _resultFpBlock;
 }
-
 
 @property(nonatomic, retain) NSString *accessKey;
 @property(nonatomic, retain) NSString *accessSecret;
 @property(nonatomic, retain) NSString *host;
 @property(nonatomic, retain) NSString *audioType;
 @property(nonatomic, retain) NSString *homedir;
+@property(nonatomic, retain) NSString *uuid;
+@property(nonatomic, retain) NSString *protocol;
 @property(nonatomic, retain) NSDictionary *params;
 @property(nonatomic, assign) ACRCloudRecMode recMode;
-@property(nonatomic, assign) int requestTimeout;
+@property(nonatomic, assign) NSInteger requestTimeout;
+@property(nonatomic, assign) NSInteger prerecorderTime;
+@property(nonatomic, assign) NSInteger keepPlaying;
 @property(nonatomic, copy) ACRCloudResultBlock resultBlock;
 @property(nonatomic, copy) ACRCloudStateBlock stateBlock;
 @property(nonatomic, copy) ACRCloudVolumeBlock volumeBlock;
+@property(nonatomic, copy) ACRCloudResultWithFpBlock resultFpBlock;
 
 @end
