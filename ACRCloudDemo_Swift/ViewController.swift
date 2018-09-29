@@ -96,8 +96,8 @@ class ViewController: UIViewController {
     {
 
         DispatchQueue.main.async {
-//            self.resultView.text = result;
-//            print(result);
+            self.resultView.text = result;
+            print(result);
             self._client?.stopRecordRec();
             self._start = false;
         }
