@@ -11,69 +11,76 @@ import AVFoundation
 
 class RadioController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
- 
-    // Here add categories and in each one add the name of the radio
-    private let stationDicArr = [
-        "HeavyMetal":
-            ["Met al Metal"],
-        "Jazz":
-            ["Jazzi", "Mooze"],
-        
-    ]
-    
-    // Name of the radios, needs to be the same as the one in stationDicArr
-    private let radioDic = [
-        "Met al Metal":"http://stream.laut.fm/metal-fm-com",
-        "Jazzi":"http://streaming.radio.co/s774887f7b/listen",
-        "Mooze":""
-    ]
-    
-    var stationDicArrKeyCopy : [String] = [];
+    // Theme manager to manage all colors type of each section
+    let theme = ThemeManager.currentTheme();
     
     private var player : AVPlayer?;
-    // Test for theme manager
-    let theme = ThemeManager.currentTheme()
+    
+    // Dictionary of each category and their radio names
+    // Here add categories and in each one add the name of the radio
+    private var stationDicArr : [String:[String]] = [:];
+    
+    // Dictionary of the radio name with radio url
+    // Name of the radios, needs to be the same as the one in stationDicArr
+    private var radioDic : [String:String]  = [:];
+
+    // Save the key of each category for easier access and order
+    private var stationDicArrKey : [String] = [];
+    
+    // Used for having a reference of the previous radio
+    private var previousRadioSender : UIButton?;
     
     
     override func viewDidLoad() {
         super.viewDidLoad();
         
-        stationDicArrKeyCopy = Array(stationDicArr.keys);
-        // Test for theme manager
         self.view.backgroundColor = theme.backgroundColor;
+        
+        stationDicArr = [
+            "HeavyMetal":["Met al Metal"],
+            "Jazz":["Jazzi", "Mooze"],
+        ];
+        
+        radioDic = [
+        "Met al Metal":"http://stream.laut.fm/metal-fm-com",
+        "Jazzi":"http://streaming.radio.co/s774887f7b/listen",
+        "Mooze":"",
+        ];
+        
+        stationDicArrKey = Array(stationDicArr.keys);
+       
     }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return stationDicArrKeyCopy.count;
+        return stationDicArrKey.count;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return stationDicArr[stationDicArrKeyCopy[section]]!.count ;
+        return stationDicArr[stationDicArrKey[section]]!.count ;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = stationDicArr[stationDicArrKeyCopy[indexPath.section]]![indexPath.row];
-        cell.textLabel?.textColor = theme.mainColor;
         cell.backgroundColor = theme.backgroundColor;
-    
+        let cellContainerArr = cell.subviews[0].subviews;
+        
+        // Configurate the Label of the cell
+        let cellLbl = cellContainerArr[1] as! UILabel;
+        cellLbl.text = stationDicArr[stationDicArrKey[indexPath.section]]![indexPath.row];
+        cellLbl.textColor = theme.mainColor;
+        
+        // Configurate the Button of the cell
+        let cellBtn = cellContainerArr[0] as! UIButton;
+        cellBtn.addTarget(self, action: #selector(playRadio), for: .touchUpInside);  // Add the action of what the button will do
+        cellBtn.tintColor = theme.mainColor; // Todo - change to a brighter version of the main color to stand out more
         return cell;
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return stationDicArrKeyCopy[section];
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        
-        let radioKey = stationDicArr[stationDicArrKeyCopy[indexPath.section]]![indexPath.row];
-        
-        let radioUrl = radioDic[radioKey]!;
-        
-        playRadio(radioUrl);
+        return stationDicArrKey[section];
     }
     
     // Change theme of the header
@@ -89,18 +96,35 @@ class RadioController: UIViewController, UITableViewDataSource, UITableViewDeleg
     @IBAction func scanSongAction(_ sender: Any) {
         // Vlad's work - Alert window which scan the song that is playing
         // Won't work if 'player' isn't playing (player == nil) -> indicate the user in the alert that will pop-up
+        print("Amm which song is it..?");
     }
     
     // Give the radio url and play the radio
-    func playRadio(_ radioUrl : String){
+    func playRadio(_ sender: UIButton){
+        // Get the super view(cell) of the sender(button) to arrive to the label(radio name)
+        let radioLbl = sender.superview?.subviews[1] as! UILabel;
+        let radioUrl = radioDic[radioLbl.text!]!; // With the name of the radio get the url
         
         guard let url = URL(string: radioUrl) else{
             return
         }
+
+        // Change the image of the previous button to pause if a radio was playing
+        if let preRadio = previousRadioSender {
+            preRadio.setImage(UIImage(named: "pause"), for: .normal);
+        }
+        
         
         // Then start the new radio
         player = AVPlayer(url: url);
         player?.play();
+        
+        // Change this button image to playing
+        sender.setImage(UIImage(named: "play"), for: .normal);
+        
+        // Reset reference for the current radio
+        previousRadioSender = sender;
+        
     }
     
 }
