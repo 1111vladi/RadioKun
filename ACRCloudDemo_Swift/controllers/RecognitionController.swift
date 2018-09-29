@@ -12,33 +12,19 @@ import AVFoundation
 class ViewController: UIViewController {
     
     
-    private var player : AVPlayer?
     var _start = false
     var _client: ACRCloudRecognition?
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var volumeLabel: UILabel!
     @IBOutlet weak var resultView: UITextView!
     
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        let radioDic =
-        "http://stream.laut.fm/metal-fm-com";
-        
-            guard let url = URL(string: radioDic) else{
-                return
-            }
-            player = AVPlayer(url: url)
-        
-
-        player?.play();
-        
-
-        
-        
-        
+       
+       
         
         _start = false;
         
