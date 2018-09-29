@@ -38,13 +38,26 @@ class RadioController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         stationDicArr = [
             "HeavyMetal":["Met al Metal"],
-            "Jazz":["Jazzi", "Mooze"],
+            "Jazz":["Jazzi"],
+            "Folk":["Liscio e Folk"],
+            "Classical":["WDAV Classica"],
+            "Rock":["Jewish Rock"],
+            "Country":["WBGK 101.1 FM Newport Village"],
+            "Swing":["Gorindo"],
+            "Trance":["Digital Impulse"],
+            
         ];
-        
+       
         radioDic = [
         "Met al Metal":"http://stream.laut.fm/metal-fm-com",
         "Jazzi":"http://streaming.radio.co/s774887f7b/listen",
         "Mooze":"",
+        "Liscio e Folk":"http://dj.mediastreaming.it:7012",
+        "WDAV Classica":"http://audio-mp3.ibiblio.org:8000/wdav-24k",
+        "Jewish Rock":"http://sc11.spacialnet.com/stream/2554/",
+        "Gorindo":"http://streaming.radionomy.com/Gorindo?lang=en-US&appName=iTunes.m3u",
+        "Digital Impulse":"http://5.39.71.159:8554/;stream;",
+        "WBGK 101.1 FM Newport Village":"http://ice6.securenetsystems.net/WBGK"
         ];
         
         stationDicArrKey = Array(stationDicArr.keys);
@@ -111,8 +124,16 @@ class RadioController: UIViewController, UITableViewDataSource, UITableViewDeleg
 
         // Change the image of the previous button to pause if a radio was playing
         if let preRadio = previousRadioSender {
+            
             preRadio.setImage(UIImage(named: "pause"), for: .normal);
+            
+            // It's the same radio so the user wants to stop to listen to this radio
+            if preRadio == sender {
+                player?.pause();
+                return // Don't need to continue as the user stopped to listen to this radio
+            }
         }
+        
         
         
         // Then start the new radio
