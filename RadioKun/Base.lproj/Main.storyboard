@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="1017" y="-296"/>
         </scene>
-        <!--View Controller-->
+        <!--History Controller-->
         <scene sceneID="XhH-yZ-ERP">
             <objects>
-                <viewController id="1zr-kL-q5F" sceneMemberID="viewController">
+                <viewController id="1zr-kL-q5F" customClass="HistoryController" customModule="RadioKun" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="N8w-LJ-f3P"/>
                         <viewControllerLayoutGuide type="bottom" id="l40-go-cad"/>
@@ -97,20 +97,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gry-OE-Oej">
-                                <rect key="frame" x="114.5" y="304.5" width="146" height="58"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xMj-SB-cTa">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="n6y-S5-980">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n6y-S5-980" id="y2Q-mF-Bkr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1zr-kL-q5F" id="e5c-lM-JyA"/>
+                                    <outlet property="delegate" destination="1zr-kL-q5F" id="tNP-67-l7g"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gry-OE-Oej" firstAttribute="centerX" secondItem="flF-Jh-eN9" secondAttribute="centerX" id="H7c-Yv-E7G"/>
-                            <constraint firstItem="gry-OE-Oej" firstAttribute="centerY" secondItem="flF-Jh-eN9" secondAttribute="centerY" id="kq9-xR-OzN"/>
+                            <constraint firstItem="l40-go-cad" firstAttribute="top" secondItem="xMj-SB-cTa" secondAttribute="bottom" id="80A-3U-ubK"/>
+                            <constraint firstAttribute="trailing" secondItem="xMj-SB-cTa" secondAttribute="trailing" id="HWg-rM-sJ3"/>
+                            <constraint firstItem="xMj-SB-cTa" firstAttribute="top" secondItem="N8w-LJ-f3P" secondAttribute="bottom" id="hYQ-ui-7su"/>
+                            <constraint firstItem="xMj-SB-cTa" firstAttribute="leading" secondItem="flF-Jh-eN9" secondAttribute="leading" id="p4t-Dh-K85"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="history_list" id="fCh-mQ-WEs"/>
+                    <connections>
+                        <outlet property="tableView" destination="xMj-SB-cTa" id="FVG-3k-qoF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6k-4j-zZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

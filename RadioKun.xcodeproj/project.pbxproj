@@ -13,6 +13,12 @@
 		03E850E0215EEB1800E23C60 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E850DF215EEB1800E23C60 /* NavController.swift */; };
 		03FF7D5C2160E81F004D3C5D /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7D5B2160E81F004D3C5D /* DatabaseManager.swift */; };
 		03FF7D5F2160E879004D3C5D /* RadioKun.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7D5D2160E879004D3C5D /* RadioKun.xcdatamodeld */; };
+		03FF7DFD21614DD6004D3C5D /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7DFC21614DD6004D3C5D /* Song.swift */; };
+		03FF7E0021614FB7004D3C5D /* DBUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7DFF21614FB7004D3C5D /* DBUtil.swift */; };
+		03FF7E0221616135004D3C5D /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7E0121616135004D3C5D /* HistoryController.swift */; };
+		03FF7E05216182A1004D3C5D /* SongHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7E04216182A1004D3C5D /* SongHistoryCell.swift */; };
+		03FF7E072161851E004D3C5D /* SongFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7E062161851E004D3C5D /* SongFavoriteCell.swift */; };
+		03FF7E0921618562004D3C5D /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7E0821618562004D3C5D /* SongCell.swift */; };
 		A24E360E1D5B74F600C98C28 /* LICENSE.MD in Sources */ = {isa = PBXBuildFile; fileRef = A24E360D1D5B74F600C98C28 /* LICENSE.MD */; };
 		A2D968871CA512B0009618E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D968861CA512B0009618E1 /* AppDelegate.swift */; };
 		A2D968891CA512B0009618E1 /* RecognitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D968881CA512B0009618E1 /* RecognitionController.swift */; };
@@ -33,6 +39,12 @@
 		03E850DF215EEB1800E23C60 /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		03FF7D5B2160E81F004D3C5D /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		03FF7D5E2160E879004D3C5D /* ACRCloudeDemo_Swift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ACRCloudeDemo_Swift.xcdatamodel; sourceTree = "<group>"; };
+		03FF7DFC21614DD6004D3C5D /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		03FF7DFF21614FB7004D3C5D /* DBUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUtil.swift; sourceTree = "<group>"; };
+		03FF7E0121616135004D3C5D /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
+		03FF7E04216182A1004D3C5D /* SongHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongHistoryCell.swift; sourceTree = "<group>"; };
+		03FF7E062161851E004D3C5D /* SongFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFavoriteCell.swift; sourceTree = "<group>"; };
+		03FF7E0821618562004D3C5D /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		A24E360D1D5B74F600C98C28 /* LICENSE.MD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.MD; sourceTree = "<group>"; };
 		A2D968831CA512AF009618E1 /* RadioKun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioKun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D968861CA512B0009618E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,12 +91,32 @@
 		0362B092215ED4E70025C2F8 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A2D968881CA512B0009618E1 /* RecognitionController.swift */,
 				0362B08F215EC9DB0025C2F8 /* RadioController.swift */,
+				03FF7E0121616135004D3C5D /* HistoryController.swift */,
 				03E850DD215EE8D200E23C60 /* TabController.swift */,
 				03E850DF215EEB1800E23C60 /* NavController.swift */,
+				A2D968881CA512B0009618E1 /* RecognitionController.swift */,
 			);
 			path = controllers;
+			sourceTree = "<group>";
+		};
+		03FF7DFE21614DE4004D3C5D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				03FF7DFC21614DD6004D3C5D /* Song.swift */,
+				03FF7DFF21614FB7004D3C5D /* DBUtil.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		03FF7E0321618256004D3C5D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				03FF7E04216182A1004D3C5D /* SongHistoryCell.swift */,
+				03FF7E062161851E004D3C5D /* SongFavoriteCell.swift */,
+				03FF7E0821618562004D3C5D /* SongCell.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		A2D9687A1CA512AF009618E1 = {
@@ -95,7 +127,7 @@
 				A2D968BC1CA51EE1009618E1 /* AudioToolbox.framework */,
 				A2D968BA1CA51ED6009618E1 /* Security.framework */,
 				A2D968B81CA51EC0009618E1 /* AVFoundation.framework */,
-				A2D968851CA512B0009618E1 /* ACRCloudDemo_Swift */,
+				A2D968851CA512B0009618E1 /* RadioKun */,
 				A2D968841CA512AF009618E1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,23 +140,25 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A2D968851CA512B0009618E1 /* ACRCloudDemo_Swift */ = {
+		A2D968851CA512B0009618E1 /* RadioKun */ = {
 			isa = PBXGroup;
 			children = (
 				A2D968BF1CA53B57009618E1 /* ACRCloudDemo_Swift-Bridging-Header.h */,
 				0362B091215ED4D20025C2F8 /* recognitionStuff */,
 				A2D968861CA512B0009618E1 /* AppDelegate.swift */,
 				03E850DB215EDF6500E23C60 /* ThemeManager.swift */,
+				03FF7D5B2160E81F004D3C5D /* DatabaseManager.swift */,
 				0362B092215ED4E70025C2F8 /* controllers */,
+				03FF7DFE21614DE4004D3C5D /* model */,
+				03FF7E0321618256004D3C5D /* view */,
 				A2D9688A1CA512B0009618E1 /* Main.storyboard */,
 				A24E360D1D5B74F600C98C28 /* LICENSE.MD */,
 				A2D9688D1CA512B0009618E1 /* Assets.xcassets */,
 				A2D9688F1CA512B0009618E1 /* LaunchScreen.storyboard */,
 				A2D968921CA512B0009618E1 /* Info.plist */,
-				03FF7D5B2160E81F004D3C5D /* DatabaseManager.swift */,
 				03FF7D5D2160E879004D3C5D /* RadioKun.xcdatamodeld */,
 			);
-			path = ACRCloudDemo_Swift;
+			path = RadioKun;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,10 +239,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				03FF7D5F2160E879004D3C5D /* RadioKun.xcdatamodeld in Sources */,
+				03FF7E05216182A1004D3C5D /* SongHistoryCell.swift in Sources */,
 				03E850DC215EDF6500E23C60 /* ThemeManager.swift in Sources */,
 				A2D968891CA512B0009618E1 /* RecognitionController.swift in Sources */,
+				03FF7E0021614FB7004D3C5D /* DBUtil.swift in Sources */,
+				03FF7E0221616135004D3C5D /* HistoryController.swift in Sources */,
 				03E850DE215EE8D200E23C60 /* TabController.swift in Sources */,
+				03FF7DFD21614DD6004D3C5D /* Song.swift in Sources */,
 				03E850E0215EEB1800E23C60 /* NavController.swift in Sources */,
+				03FF7E072161851E004D3C5D /* SongFavoriteCell.swift in Sources */,
+				03FF7E0921618562004D3C5D /* SongCell.swift in Sources */,
 				A24E360E1D5B74F600C98C28 /* LICENSE.MD in Sources */,
 				03FF7D5C2160E81F004D3C5D /* DatabaseManager.swift in Sources */,
 				0362B090215EC9DB0025C2F8 /* RadioController.swift in Sources */,
@@ -350,7 +390,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = ACRCloudDemo_Swift/Info.plist;
+				INFOPLIST_FILE = RadioKun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,7 +398,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/ACRCloudDemo_Swift",
+					"$(PROJECT_DIR)/RadioKun",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.radiokun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -378,7 +418,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = ACRCloudDemo_Swift/Info.plist;
+				INFOPLIST_FILE = RadioKun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -386,7 +426,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/ACRCloudDemo_Swift",
+					"$(PROJECT_DIR)/RadioKun",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.radiokun;
 				PRODUCT_NAME = "$(TARGET_NAME)";

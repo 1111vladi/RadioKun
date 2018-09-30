@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class RadioController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class RadioController: UIViewController, UITableViewDataSource{
     
     // Theme manager to manage all colors type of each section
     let theme = ThemeManager.currentTheme();
@@ -61,6 +61,7 @@ class RadioController: UIViewController, UITableViewDataSource, UITableViewDeleg
         ];
         
         stationDicArrKey = Array(stationDicArr.keys);
+        
        
     }
     
@@ -87,7 +88,7 @@ class RadioController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         // Configurate the Button of the cell
         let cellBtn = cellContainerArr[0] as! UIButton;
-        cellBtn.addTarget(self, action: #selector(playRadio), for: .touchUpInside);  // Add the action of what the button will do
+        cellBtn.addTarget(self, action: #selector(playRadio(_:)), for: .touchUpInside);  // Add the action of what the button will do
         cellBtn.tintColor = theme.mainColor; // Todo - change to a brighter version of the main color to stand out more
         return cell;
     }
@@ -97,7 +98,7 @@ class RadioController: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     // Change theme of the header
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    @objc func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView;
         header.backgroundView?.backgroundColor = theme.navigationBackgroundColor;
         header.textLabel?.textColor = theme.mainColor;
@@ -134,8 +135,6 @@ class RadioController: UIViewController, UITableViewDataSource, UITableViewDeleg
             }
         }
         
-        
-        
         // Then start the new radio
         player = AVPlayer(url: url);
         player?.play();
@@ -145,6 +144,32 @@ class RadioController: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         // Reset reference for the current radio
         previousRadioSender = sender;
+        
+        // TEST DB SONG - Vlad you can un-comment this to see how it works :P
+        // Date - get the current date and time
+//        let currentDateTime = Date();
+//
+//        // Put song
+//        Song.createSongWith(name: radioLbl.text!, band: radioUrl, category: "maybe", favorite: false, timeRecognize: currentDateTime);
+//
+//        // Get song
+//        let obj = DBUtil.fetchedResultsHistoryController();
+//        let songArr = obj.fetchedObjects!; // Array of all songs
+//
+//        // Initialize the date formatter and set the style
+//        let formatter = DateFormatter();
+//        formatter.dateFormat = "dd/M/yy HH:mm";
+//
+//        let formatterLong = DateFormatter();
+//        formatterLong.dateStyle = .long;
+//        formatterLong.timeStyle = .long;
+//
+//        // Show song
+//        for song in songArr {
+//            let printThis = song.name! + " " + song.band! + " " + formatter.string(from: song.time_recog!) + " " + formatterLong.string(from: song.time_recog!);
+//            print(printThis);
+//        }
+        
         
     }
     
