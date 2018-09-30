@@ -113,7 +113,7 @@ class RadioController: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     // Give the radio url and play the radio
-    func playRadio(_ sender: UIButton){
+    @objc func playRadio(_ sender: UIButton){
         // Get the super view(cell) of the sender(button) to arrive to the label(radio name)
         let radioLbl = sender.superview?.subviews[1] as! UILabel;
         let radioUrl = radioDic[radioLbl.text!]!; // With the name of the radio get the url
@@ -122,10 +122,10 @@ class RadioController: UIViewController, UITableViewDataSource, UITableViewDeleg
             return
         }
 
-        // Change the image of the previous button to pause if a radio was playing
+        // Change the image of the previous button to play if a radio was playing
         if let preRadio = previousRadioSender {
             
-            preRadio.setImage(UIImage(named: "pause"), for: .normal);
+            preRadio.setImage(UIImage(named: "play"), for: .normal);
             
             // It's the same radio so the user wants to stop to listen to this radio
             if preRadio == sender {
@@ -140,8 +140,8 @@ class RadioController: UIViewController, UITableViewDataSource, UITableViewDeleg
         player = AVPlayer(url: url);
         player?.play();
         
-        // Change this button image to playing
-        sender.setImage(UIImage(named: "play"), for: .normal);
+        // Change this button image to pause indicating that the radio is playing and could be paused
+        sender.setImage(UIImage(named: "pause"), for: .normal);
         
         // Reset reference for the current radio
         previousRadioSender = sender;

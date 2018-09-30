@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:ACRCloudDemo_Swift.xcodeproj">
+      location = "self:/Users/nico/Desktop/Projects/RadioKun3/RadioKun.xcodeproj">
    </FileRef>
 </Workspace>

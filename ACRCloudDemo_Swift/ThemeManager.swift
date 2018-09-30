@@ -141,6 +141,7 @@ class ThemeManager {
         let sharedApplication = UIApplication.shared
         sharedApplication.delegate?.window??.tintColor = theme.mainColor
         
+        
         UINavigationBar.appearance().barStyle = theme.barStyle
         UINavigationBar.appearance().setBackgroundImage(theme.navigationBackgroundImage, for: .default)
         UINavigationBar.appearance().backIndicatorImage = UIImage(named: "backArrow")
@@ -177,5 +178,6 @@ class ThemeManager {
         
         UISwitch.appearance().onTintColor = theme.mainColor.withAlphaComponent(0.3)
         UISwitch.appearance().thumbTintColor = theme.mainColor
+        
     }
 }

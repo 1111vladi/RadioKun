@@ -12,7 +12,7 @@
         <!--Radio Controller-->
         <scene sceneID="0dD-sB-7AS">
             <objects>
-                <viewController id="2dz-Gw-ORo" customClass="RadioController" customModule="ACRCloudDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2dz-Gw-ORo" customClass="RadioController" customModule="RadioKun" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yvR-Ar-0zF"/>
                         <viewControllerLayoutGuide type="bottom" id="YP8-Ho-Ltq"/>
@@ -24,9 +24,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uvq-wI-eom">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Fh7-S2-KGW">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -38,7 +36,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lA-0U-rkj">
                                                     <rect key="frame" x="309" y="-3.5" width="50" height="50.5"/>
                                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <state key="normal" image="pause"/>
+                                                    <state key="normal" image="play"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cna-lS-foe">
                                                     <rect key="frame" x="16" y="8" width="42" height="27.5"/>
@@ -121,7 +119,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ACRCloudDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RadioKun" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -223,7 +221,7 @@
         <!--Nav Controller-->
         <scene sceneID="El8-d9-vuG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EFv-OZ-m0F" customClass="NavController" customModule="ACRCloudDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EFv-OZ-m0F" customClass="NavController" customModule="RadioKun" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="radio" id="Kuq-Ol-kNj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s5I-Sp-rFZ">
@@ -242,7 +240,7 @@
         <!--Tab Controller-->
         <scene sceneID="77P-v6-wAK">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6NG-hh-mta" customClass="TabController" customModule="ACRCloudDemo_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6NG-hh-mta" customClass="TabController" customModule="RadioKun" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OMd-oO-mYO">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -267,8 +265,8 @@ CQ
     <resources>
         <image name="favorite" width="50" height="50"/>
         <image name="history_list" width="50" height="50"/>
-        <image name="pause" width="50" height="50"/>
+        <image name="play" width="50" height="50"/>
         <image name="radio" width="50" height="50"/>
-        <image name="scan_song" width="50" height="50"/>
+        <image name="scan_song" width="75" height="75"/>
     </resources>
 </document>

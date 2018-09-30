@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		03E850DC215EDF6500E23C60 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E850DB215EDF6500E23C60 /* ThemeManager.swift */; };
 		03E850DE215EE8D200E23C60 /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E850DD215EE8D200E23C60 /* TabController.swift */; };
 		03E850E0215EEB1800E23C60 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E850DF215EEB1800E23C60 /* NavController.swift */; };
+		03FF7D5C2160E81F004D3C5D /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7D5B2160E81F004D3C5D /* DatabaseManager.swift */; };
+		03FF7D5F2160E879004D3C5D /* RadioKun.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7D5D2160E879004D3C5D /* RadioKun.xcdatamodeld */; };
 		A24E360E1D5B74F600C98C28 /* LICENSE.MD in Sources */ = {isa = PBXBuildFile; fileRef = A24E360D1D5B74F600C98C28 /* LICENSE.MD */; };
 		A2D968871CA512B0009618E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D968861CA512B0009618E1 /* AppDelegate.swift */; };
 		A2D968891CA512B0009618E1 /* RecognitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D968881CA512B0009618E1 /* RecognitionController.swift */; };
@@ -24,38 +26,21 @@
 		A2D968C71CA6560D009618E1 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D968C61CA6560D009618E1 /* libc++.tbd */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A2D968981CA512B0009618E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A2D9687B1CA512AF009618E1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A2D968821CA512AF009618E1;
-			remoteInfo = ACRCloudDemo_Swift;
-		};
-		A2D968A31CA512B0009618E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A2D9687B1CA512AF009618E1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A2D968821CA512AF009618E1;
-			remoteInfo = ACRCloudDemo_Swift;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0362B08F215EC9DB0025C2F8 /* RadioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioController.swift; sourceTree = "<group>"; };
 		03E850DB215EDF6500E23C60 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		03E850DD215EE8D200E23C60 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		03E850DF215EEB1800E23C60 /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
+		03FF7D5B2160E81F004D3C5D /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		03FF7D5E2160E879004D3C5D /* ACRCloudeDemo_Swift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ACRCloudeDemo_Swift.xcdatamodel; sourceTree = "<group>"; };
 		A24E360D1D5B74F600C98C28 /* LICENSE.MD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.MD; sourceTree = "<group>"; };
-		A2D968831CA512AF009618E1 /* ACRCloudDemo_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACRCloudDemo_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2D968831CA512AF009618E1 /* RadioKun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioKun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D968861CA512B0009618E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2D968881CA512B0009618E1 /* RecognitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionController.swift; sourceTree = "<group>"; };
 		A2D9688B1CA512B0009618E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A2D9688D1CA512B0009618E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2D968901CA512B0009618E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2D968921CA512B0009618E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A2D968971CA512B0009618E1 /* ACRCloudDemo_SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ACRCloudDemo_SwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2D968A21CA512B0009618E1 /* ACRCloudDemo_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ACRCloudDemo_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D968B41CA51E5F009618E1 /* ACRCloudConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACRCloudConfig.h; sourceTree = "<group>"; };
 		A2D968B51CA51E5F009618E1 /* ACRCloudRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACRCloudRecognition.h; sourceTree = "<group>"; };
 		A2D968B81CA51EC0009618E1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -76,20 +61,6 @@
 				A2D968BB1CA51ED6009618E1 /* Security.framework in Frameworks */,
 				A2D968B91CA51EC0009618E1 /* AVFoundation.framework in Frameworks */,
 				A2D968C51CA655D9009618E1 /* libACRCloud_IOS_SDK.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A2D968941CA512B0009618E1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A2D9689F1CA512B0009618E1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,9 +103,7 @@
 		A2D968841CA512AF009618E1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A2D968831CA512AF009618E1 /* ACRCloudDemo_Swift.app */,
-				A2D968971CA512B0009618E1 /* ACRCloudDemo_SwiftTests.xctest */,
-				A2D968A21CA512B0009618E1 /* ACRCloudDemo_SwiftUITests.xctest */,
+				A2D968831CA512AF009618E1 /* RadioKun.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,6 +121,8 @@
 				A2D9688D1CA512B0009618E1 /* Assets.xcassets */,
 				A2D9688F1CA512B0009618E1 /* LaunchScreen.storyboard */,
 				A2D968921CA512B0009618E1 /* Info.plist */,
+				03FF7D5B2160E81F004D3C5D /* DatabaseManager.swift */,
+				03FF7D5D2160E879004D3C5D /* RadioKun.xcdatamodeld */,
 			);
 			path = ACRCloudDemo_Swift;
 			sourceTree = "<group>";
@@ -159,9 +130,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A2D968821CA512AF009618E1 /* ACRCloudDemo_Swift */ = {
+		A2D968821CA512AF009618E1 /* RadioKun */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A2D968AB1CA512B0009618E1 /* Build configuration list for PBXNativeTarget "ACRCloudDemo_Swift" */;
+			buildConfigurationList = A2D968AB1CA512B0009618E1 /* Build configuration list for PBXNativeTarget "RadioKun" */;
 			buildPhases = (
 				A2D9687F1CA512AF009618E1 /* Sources */,
 				A2D968801CA512AF009618E1 /* Frameworks */,
@@ -171,46 +142,10 @@
 			);
 			dependencies = (
 			);
-			name = ACRCloudDemo_Swift;
+			name = RadioKun;
 			productName = ACRCloudDemo_Swift;
-			productReference = A2D968831CA512AF009618E1 /* ACRCloudDemo_Swift.app */;
+			productReference = A2D968831CA512AF009618E1 /* RadioKun.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A2D968961CA512B0009618E1 /* ACRCloudDemo_SwiftTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A2D968AE1CA512B0009618E1 /* Build configuration list for PBXNativeTarget "ACRCloudDemo_SwiftTests" */;
-			buildPhases = (
-				A2D968931CA512B0009618E1 /* Sources */,
-				A2D968941CA512B0009618E1 /* Frameworks */,
-				A2D968951CA512B0009618E1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A2D968991CA512B0009618E1 /* PBXTargetDependency */,
-			);
-			name = ACRCloudDemo_SwiftTests;
-			productName = ACRCloudDemo_SwiftTests;
-			productReference = A2D968971CA512B0009618E1 /* ACRCloudDemo_SwiftTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A2D968A11CA512B0009618E1 /* ACRCloudDemo_SwiftUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A2D968B11CA512B0009618E1 /* Build configuration list for PBXNativeTarget "ACRCloudDemo_SwiftUITests" */;
-			buildPhases = (
-				A2D9689E1CA512B0009618E1 /* Sources */,
-				A2D9689F1CA512B0009618E1 /* Frameworks */,
-				A2D968A01CA512B0009618E1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A2D968A41CA512B0009618E1 /* PBXTargetDependency */,
-			);
-			name = ACRCloudDemo_SwiftUITests;
-			productName = ACRCloudDemo_SwiftUITests;
-			productReference = A2D968A21CA512B0009618E1 /* ACRCloudDemo_SwiftUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -219,28 +154,22 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = olym.yin;
 				TargetAttributes = {
 					A2D968821CA512AF009618E1 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 73VE83GXNB;
-						LastSwiftMigration = 0810;
-					};
-					A2D968961CA512B0009618E1 = {
-						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0810;
-						TestTargetID = A2D968821CA512AF009618E1;
-					};
-					A2D968A11CA512B0009618E1 = {
-						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0810;
-						TestTargetID = A2D968821CA512AF009618E1;
+						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
-			buildConfigurationList = A2D9687E1CA512AF009618E1 /* Build configuration list for PBXProject "ACRCloudDemo_Swift" */;
-			compatibilityVersion = "Xcode 3.2";
+			buildConfigurationList = A2D9687E1CA512AF009618E1 /* Build configuration list for PBXProject "RadioKun" */;
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -252,9 +181,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A2D968821CA512AF009618E1 /* ACRCloudDemo_Swift */,
-				A2D968961CA512B0009618E1 /* ACRCloudDemo_SwiftTests */,
-				A2D968A11CA512B0009618E1 /* ACRCloudDemo_SwiftUITests */,
+				A2D968821CA512AF009618E1 /* RadioKun */,
 			);
 		};
 /* End PBXProject section */
@@ -270,20 +197,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A2D968951CA512B0009618E1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A2D968A01CA512B0009618E1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -291,44 +204,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03FF7D5F2160E879004D3C5D /* RadioKun.xcdatamodeld in Sources */,
 				03E850DC215EDF6500E23C60 /* ThemeManager.swift in Sources */,
 				A2D968891CA512B0009618E1 /* RecognitionController.swift in Sources */,
 				03E850DE215EE8D200E23C60 /* TabController.swift in Sources */,
 				03E850E0215EEB1800E23C60 /* NavController.swift in Sources */,
 				A24E360E1D5B74F600C98C28 /* LICENSE.MD in Sources */,
+				03FF7D5C2160E81F004D3C5D /* DatabaseManager.swift in Sources */,
 				0362B090215EC9DB0025C2F8 /* RadioController.swift in Sources */,
 				A2D968871CA512B0009618E1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A2D968931CA512B0009618E1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A2D9689E1CA512B0009618E1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A2D968991CA512B0009618E1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A2D968821CA512AF009618E1 /* ACRCloudDemo_Swift */;
-			targetProxy = A2D968981CA512B0009618E1 /* PBXContainerItemProxy */;
-		};
-		A2D968A41CA512B0009618E1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A2D968821CA512AF009618E1 /* ACRCloudDemo_Swift */;
-			targetProxy = A2D968A31CA512B0009618E1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A2D9688A1CA512B0009618E1 /* Main.storyboard */ = {
@@ -358,13 +246,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -386,7 +284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -403,13 +301,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -425,9 +333,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -440,19 +349,24 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ACRCloudDemo_Swift/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ACRCloudDemo_Swift",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ACRCloud.ACRCloudDemo2-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.radiokun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ACRCloudDemo_Swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -463,77 +377,30 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ACRCloudDemo_Swift/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ACRCloudDemo_Swift",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ACRCloud.ACRCloudDemo2-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.radiokun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ACRCloudDemo_Swift-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		A2D968AF1CA512B0009618E1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ACRCloudDemo_SwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ACRCloud.ACRCloudDemo-SwiftTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ACRCloudDemo_Swift.app/ACRCloudDemo_Swift";
-			};
-			name = Debug;
-		};
-		A2D968B01CA512B0009618E1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ACRCloudDemo_SwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ACRCloud.ACRCloudDemo-SwiftTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ACRCloudDemo_Swift.app/ACRCloudDemo_Swift";
-			};
-			name = Release;
-		};
-		A2D968B21CA512B0009618E1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ACRCloudDemo_SwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ACRCloud.ACRCloudDemo-SwiftUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = ACRCloudDemo_Swift;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		A2D968B31CA512B0009618E1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ACRCloudDemo_SwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ACRCloud.ACRCloudDemo-SwiftUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = ACRCloudDemo_Swift;
-				USES_XCTRUNNER = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A2D9687E1CA512AF009618E1 /* Build configuration list for PBXProject "ACRCloudDemo_Swift" */ = {
+		A2D9687E1CA512AF009618E1 /* Build configuration list for PBXProject "RadioKun" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2D968A91CA512B0009618E1 /* Debug */,
@@ -542,7 +409,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A2D968AB1CA512B0009618E1 /* Build configuration list for PBXNativeTarget "ACRCloudDemo_Swift" */ = {
+		A2D968AB1CA512B0009618E1 /* Build configuration list for PBXNativeTarget "RadioKun" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A2D968AC1CA512B0009618E1 /* Debug */,
@@ -551,25 +418,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A2D968AE1CA512B0009618E1 /* Build configuration list for PBXNativeTarget "ACRCloudDemo_SwiftTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A2D968AF1CA512B0009618E1 /* Debug */,
-				A2D968B01CA512B0009618E1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A2D968B11CA512B0009618E1 /* Build configuration list for PBXNativeTarget "ACRCloudDemo_SwiftUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A2D968B21CA512B0009618E1 /* Debug */,
-				A2D968B31CA512B0009618E1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		03FF7D5D2160E879004D3C5D /* RadioKun.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				03FF7D5E2160E879004D3C5D /* ACRCloudeDemo_Swift.xcdatamodel */,
+			);
+			currentVersion = 03FF7D5E2160E879004D3C5D /* ACRCloudeDemo_Swift.xcdatamodel */;
+			path = RadioKun.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A2D9687B1CA512AF009618E1 /* Project object */;
 }
