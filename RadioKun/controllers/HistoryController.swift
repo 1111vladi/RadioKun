@@ -25,6 +25,10 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         
         tableView.delegate = self
         self.controller = DBUtil.fetchedResultsHistoryController();
+        
+        tableView.estimatedRowHeight = 100.0;
+        tableView.rowHeight = UITableView.automaticDimension;
+       
 //        controller.delegate = self //the controller will update us with very interesting events
     }
     
@@ -37,6 +41,15 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         return 1;
     }
     
+    // TEST
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+        
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 //    //group header text
 //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        return controller.sections![section].name;
@@ -49,10 +62,12 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  // as! HistoryCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! SongHistoryCell;
         
 //        cell.configure(with: controller.object(at: indexPath))
-        cell.textLabel?.text = controller.fetchedObjects![indexPath.row].name;
+//        cell.textLabel?.text = controller.fetchedObjects![indexPath.row].name;
+        let song = controller.fetchedObjects![indexPath.row];
+        cell.configure(song);
 //        cell.delegate = self
         
         return cell

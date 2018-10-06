@@ -10,6 +10,8 @@ import UIKit
 
 class SongFavoriteCell: SongCell {
     
+    @IBOutlet weak var songLbl: UILabel!
+    @IBOutlet weak var bandLbl: UILabel!
     // Constructor - Configuration of how the cell will be populated
     override func configure(_ song: Song){
 //        song.name
@@ -19,4 +21,13 @@ class SongFavoriteCell: SongCell {
 //        song.time_recog
     }
     
+    // Add to favorite or remove from there
+    // Depend on the state of the favorite the icon will change(filled <-> empty)
+   @IBAction func favoriteAction(_ sender: Any) {
+    }
+        
+        
+    @IBAction func facebookAction(_ sender: Any) {
+        // Vlad - at phase 4 add function to share the selected song
+    }
 }
