@@ -11,6 +11,13 @@ import AVFoundation
 
 class RadioController: UIViewController, UITableViewDataSource{
     
+    // Global UIAlert
+    private var alert : UIAlertController? = nil;
+    private var alert2 : UIAlertController? = nil;
+    // Song scan variables
+    var _start = false
+    var _client: ACRCloudRecognition?
+    
     // Theme manager to manage all colors type of each section
     let theme = ThemeManager.currentTheme();
     
@@ -34,7 +41,35 @@ class RadioController: UIViewController, UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad();
         
+        // Recognition stuff
+        // ----- START -----
+        _start = false;
+        let config = ACRCloudConfig();
+        
+        config.accessKey = "f75f02f3d1e63df9d623dec82494a62a";
+        config.accessSecret = "Skmt3sSm8D9FgLLMPPguRIrhcXezPuB8bt1iCW34";
+        config.host = "identify-eu-west-1.acrcloud.com";
+        //if you want to identify your offline db, set the recMode to "rec_mode_local"
+        config.recMode = rec_mode_remote;
+        config.audioType = "recording";
+        config.requestTimeout = 10;
+        config.protocol = "http";
+        config.keepPlaying = 2;  //1 is restore the previous Audio Category when stop recording. 2 (default), only stop recording, do nothing with the Audio Category.
+        
+        /* used for local model */
+        if (config.recMode == rec_mode_local || config.recMode == rec_mode_both) {
+            config.homedir = Bundle.main.resourcePath!.appending("/acrcloud_local_db");
+        }
+        
+        // Result
+        config.resultBlock = {[weak self] result, resType in
+            self?.handleResult(result!, resType:resType);
+        }
+        self._client = ACRCloudRecognition(config: config);
+        // ----- END -----
+        
         self.view.backgroundColor = theme.backgroundColor;
+        
         
         stationDicArr = [
             "HeavyMetal":["Met al Metal"],
@@ -58,14 +93,83 @@ class RadioController: UIViewController, UITableViewDataSource{
         "Gorindo":"http://streaming.radionomy.com/Gorindo?lang=en-US&appName=iTunes.m3u",
         "Digital Impulse":"http://5.39.71.159:8554/;stream;",
         "WBGK 101.1 FM Newport Village":"http://ice6.securenetsystems.net/WBGK"
+            
         ];
-        
         stationDicArrKey = Array(stationDicArr.keys);
         
        
     }
     
+    // Result Handler
+    func handleResult(_ result: String, resType: ACRCloudResultType) -> Void
+    {
+        
+        DispatchQueue.main.async {
+            //            self.resultView.text = result;
+            let data: Data? = result.data(using: .utf8) // non-nil
+            guard let json = try? JSONSerialization.jsonObject(with: data!, options: []) else{return}
+            guard let jsonObject = json as? [String: Any] else {
+                return
+            }
+            guard let status = jsonObject["status"] as? [String: Any] else {
+                return
+            }
+            guard let msg = status["msg"] as? String else {
+                return
+            }
+            print(result) // delectus aut autem
+        
+            if msg == "Success" {
+                guard let metadata = jsonObject["metadata"] as? [String: Any] else{
+                    return
+                }
+                guard let music = metadata["music"] as? [[String: Any]] else {
+                    return
+                }
+                // Band Name
+                guard let artists = music[0]["artists"] as? [[String: Any]] else {
+                    return
+                }
+                guard let name = artists[0]["name"] as? String else {
+                    return
+                }
+                // Song Name
+                guard let title = music[0]["title"] as? String else {
+                    return
+                }
+                // TODO - Vlad
+                // Date - get the current date and time
+                //        let currentDateTime = Date();
+                //
+                //        // Put song
+                //        Song.createSongWith(name: radioLbl.text!, band: radioUrl, category: "maybe", favorite: false, timeRecognize: currentDateTime);
+                
+                // To move to the next Controller
+                let storyboard = UIStoryboard(name: "Main", bundle: nil);
+                let resultController = storyboard.instantiateViewController(withIdentifier: "ResultController") as! ResultController;
+                resultController.bandName = name;
+                resultController.songName = title;
+                // This is the RecognitionController constant variable that is used for navigation
+                self.navigationController?.pushViewController(resultController, animated: true);
+                self.alert?.dismiss(animated: true, completion: nil);
+            } else {
+                self.alert?.dismiss(animated: true, completion: nil);
+                self.alert2 = UIAlertController(title: "Song not found", message: "Please try again", preferredStyle: .alert)
+                
+                self.alert2!.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                    self.stopScan((Any).self);
+                }))
+                
+                self.present(self.alert2!, animated: true, completion: nil)
+                print("Oh no!!!")
+            }
+            self._client?.stopRecordRec();
+            self._start = false;
+        }
+    }
     
+    // Table
+    // ----- START -----
     func numberOfSections(in tableView: UITableView) -> Int {
         return stationDicArrKey.count;
     }
@@ -105,12 +209,50 @@ class RadioController: UIViewController, UITableViewDataSource{
         header.textLabel?.font = UIFont(name: "Helvetica-Bold", size: 16);
         tableView.separatorColor = theme.mainColor;
     }
+    // ----- END -----
     
     
     @IBAction func scanSongAction(_ sender: Any) {
-        // Vlad's work - Alert window which scan the song that is playing
-        // Won't work if 'player' isn't playing (player == nil) -> indicate the user in the alert that will pop-up
+        // TODO - Vlad
+        // Change label if the scan failed
+        songScan((Any).self);
+        
+        // Open the AlertController
+        alert = UIAlertController(title: "Scanning...", message: "", preferredStyle: .alert)
+        
+        self.alert!.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { action in
+            self.stopScan((Any).self);
+        }))
+        
+        //create an activity indicator
+        let indicator = UIActivityIndicatorView(frame: alert!.view.bounds)
+        indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        //add the activity indicator as a subview of the alert controller's view
+        alert!.view.addSubview(indicator)
+        indicator.isUserInteractionEnabled = false // required otherwise if there buttons in the UIAlertController you will not be able to press them
+        indicator.color = UIColor.black
+        indicator.startAnimating()
+        self.present(alert!, animated: true, completion: nil)
+        
         print("Amm which song is it..?");
+        
+    }
+    
+    // Start scan
+    func songScan(_ state:Any){
+        if (_start) {
+            return;
+        }
+        self._client?.startRecordRec();
+        self._start = true;
+    }
+    
+    // Stop Scan
+    func stopScan(_ sender:Any) {
+        self._client?.stopRecordRec()
+        self._start = false;
+        print("Scan stopped, no song for you")
     }
     
     // Give the radio url and play the radio
