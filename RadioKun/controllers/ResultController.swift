@@ -10,8 +10,9 @@ import UIKit
 
 class ResultController: UIViewController {
     @IBOutlet weak var bandLabel: UILabel!
-    var bandName = "";
-    var songName = "";
+    public var bandName = "";
+    public var songName = "";
+    public var genreName = "";
     @IBOutlet weak var songLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
