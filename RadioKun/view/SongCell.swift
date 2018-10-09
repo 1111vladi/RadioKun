@@ -17,15 +17,14 @@ protocol SongCellDelegate : NSObjectProtocol{
 class SongCell: UITableViewCell {
     
     weak var delegate : SongCellDelegate?;
+    // Use as key when retriving data from CoreData
+    public var timeStamp: Date?;
     
     // Default Constructor - Configuration of how the cell will be populated
     // ** Override func configure with the populated items depend on the cell **
     func configure(_ song: Song){
-//        song.name
-//        song.band
-//        song.category
-//        song.favorite
-//        song.time_recog
+        // Save a reference to time_recog to use as key when retriving data from CoreData
+        timeStamp = song.time_recog;
     }
     
     

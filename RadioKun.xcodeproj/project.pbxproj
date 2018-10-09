@@ -11,6 +11,8 @@
 		03E850DC215EDF6500E23C60 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E850DB215EDF6500E23C60 /* ThemeManager.swift */; };
 		03E850DE215EE8D200E23C60 /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E850DD215EE8D200E23C60 /* TabController.swift */; };
 		03E850E0215EEB1800E23C60 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E850DF215EEB1800E23C60 /* NavController.swift */; };
+		03FEAC19216BED89004463F0 /* FavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FEAC18216BED89004463F0 /* FavoriteController.swift */; };
+		03FEAC1B216C0629004463F0 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FEAC1A216C0628004463F0 /* Util.swift */; };
 		03FF7D5C2160E81F004D3C5D /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7D5B2160E81F004D3C5D /* DatabaseManager.swift */; };
 		03FF7D5F2160E879004D3C5D /* RadioKun.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7D5D2160E879004D3C5D /* RadioKun.xcdatamodeld */; };
 		03FF7DFD21614DD6004D3C5D /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF7DFC21614DD6004D3C5D /* Song.swift */; };
@@ -38,6 +40,8 @@
 		03E850DB215EDF6500E23C60 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		03E850DD215EE8D200E23C60 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		03E850DF215EEB1800E23C60 /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
+		03FEAC18216BED89004463F0 /* FavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
+		03FEAC1A216C0628004463F0 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		03FF7D5B2160E81F004D3C5D /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		03FF7D5E2160E879004D3C5D /* ACRCloudeDemo_Swift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ACRCloudeDemo_Swift.xcdatamodel; sourceTree = "<group>"; };
 		03FF7DFC21614DD6004D3C5D /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 			children = (
 				0362B08F215EC9DB0025C2F8 /* RadioController.swift */,
 				03FF7E0121616135004D3C5D /* HistoryController.swift */,
+				03FEAC18216BED89004463F0 /* FavoriteController.swift */,
 				03E850DD215EE8D200E23C60 /* TabController.swift */,
 				03E850DF215EEB1800E23C60 /* NavController.swift */,
 				A2D968881CA512B0009618E1 /* RecognitionController.swift */,
@@ -150,6 +155,7 @@
 				0362B091215ED4D20025C2F8 /* recognitionStuff */,
 				A2D968861CA512B0009618E1 /* AppDelegate.swift */,
 				03E850DB215EDF6500E23C60 /* ThemeManager.swift */,
+				03FEAC1A216C0628004463F0 /* Util.swift */,
 				03FF7D5B2160E81F004D3C5D /* DatabaseManager.swift */,
 				0362B092215ED4E70025C2F8 /* controllers */,
 				03FF7DFE21614DE4004D3C5D /* model */,
@@ -242,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03FF7D5F2160E879004D3C5D /* RadioKun.xcdatamodeld in Sources */,
+				03FEAC1B216C0629004463F0 /* Util.swift in Sources */,
 				03FF7E05216182A1004D3C5D /* SongHistoryCell.swift in Sources */,
 				03E850DC215EDF6500E23C60 /* ThemeManager.swift in Sources */,
 				A2D968891CA512B0009618E1 /* RecognitionController.swift in Sources */,
@@ -257,6 +264,7 @@
 				03FF7D5C2160E81F004D3C5D /* DatabaseManager.swift in Sources */,
 				0362B090215EC9DB0025C2F8 /* RadioController.swift in Sources */,
 				A2D968871CA512B0009618E1 /* AppDelegate.swift in Sources */,
+				03FEAC19216BED89004463F0 /* FavoriteController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

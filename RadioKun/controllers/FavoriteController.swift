@@ -1,17 +1,17 @@
 //
-//  HistoryController.swift
+//  FavoriteController.swift
 //  RadioKun
 //
-//  Created by Nico on 30/09/2018.
+//  Created by Nico on 08/10/2018.
 //  Copyright © 2018 olym.yin. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
+class FavoriteController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-class HistoryController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-	
+    
     let theme = ThemeManager.currentTheme();
     
     @IBOutlet weak var tableView : UITableView!;
@@ -24,41 +24,37 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         self.view.backgroundColor = theme.backgroundColor;
         
         tableView.delegate = self
-        self.controller = DBUtil.fetchedResultsHistoryController();
+        self.controller = DBUtil.fetchedResultsFavoriteController();
         
-        tableView.estimatedRowHeight = 1000.0;
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData(); // Use to update the list with any change that happen in core data
     }
     
-    //MARK: - TableView
     
+    
+    // Table
+    // ---- Start ----
     //how many groups (sections) of lines (rows)
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1; // No need to separe the history in sections
+        // Sections are separate with categories
+        return controller.sections?.count ?? 0
     }
     
-//    // TEST
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//        return UITableView.automaticDimension
-//
-//    }
-//
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
+   
+    // Group header text
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return controller.sections![section].name;
+    }
     
-    // Number of lines for each group
+    // Number of linee for each group
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return controller.sections?.count ?? 0;
+        return controller.sections![section].numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! SongHistoryCell;
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! SongFavoriteCell;
         
         // Set data in the cell
         let song = controller.fetchedObjects![indexPath.row];
@@ -68,14 +64,10 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         cell.backgroundColor = theme.backgroundColor;
         cell.bandLbl.textColor = theme.mainColor;
         cell.songLbl.textColor = theme.mainColor;
-        cell.timestampLbl.textColor = theme.mainColor;
-        
         
         // Todo fix color of buttons...
-//        cell.facebookBtn.tintColor = theme.mainColor;
-//        cell.favoriteBtn.tintColor = theme.mainColor;
-        
-        tableView.separatorColor = theme.mainColor;
+        //        cell.facebookBtn.tintColor = theme.secondaryColor;
+        //        cell.favoriteBtn.tintColor = theme.mainColor;
         
         // Set Favorite image depend on state
         // Filled = favorite(true), Empty = not favorite(false)
@@ -85,12 +77,14 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         return cell
     }
     
-    
-    
-    // TODO - Add once RecognizeController is done
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        // Open the ViewController when successfully recognize a song
-//        // to show the full details of this song (song, band & lyrics)
-//    }
-    
+    // Change theme of the header
+    @objc func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView;
+        header.backgroundView?.backgroundColor = theme.navigationBackgroundColor;
+        header.textLabel?.textColor = theme.mainColor;
+        header.textLabel?.font = UIFont(name: "Helvetica-Bold", size: 16);
+        tableView.separatorColor = theme.mainColor;
+    }
+    // ----- END -----
+
 }

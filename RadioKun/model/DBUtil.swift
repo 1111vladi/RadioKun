@@ -30,36 +30,77 @@ class DBUtil {
         return controller;
     }
     
-    // No need for now, both functions does the same pretty much (no filters)
-//    // Get all Songs for FavoriteController
-//    static func fetchedResultsFavoriteController() -> NSFetchedResultsController<Song>{
-//
-//        // Setup request
-//        let request : NSFetchRequest<Song> = Song.fetchRequest();
-//        request.predicate = nil // Filter can be add here
-//        request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]; // Sort depend on category
-//
-//        // Setup results controller
-//        let context = DatabaseManager.manager.persistentContainer.viewContext;
-//        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "time_stamp", cacheName: nil);
-//
-//        // Run query
-//        try? controller.performFetch();
-//
-//        // Return results
-//        return controller;
-//    }
+    // Get all Songs for FavoriteController
+    static func fetchedResultsFavoriteController() -> NSFetchedResultsController<Song>{
+
+        // Setup request
+        let request : NSFetchRequest<Song> = Song.fetchRequest();
+        request.predicate = nil // Filter can be add here
+        request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]; // Sort depend on category
+
+        // Setup results controller
+        let context = DatabaseManager.manager.persistentContainer.viewContext;
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "category", cacheName: nil);
+
+        // Run query
+        try? controller.performFetch();
+
+        // Return results
+        return controller;
+    }
     
     // Change favorite for the song which the button was pressed from
     // It will always change the boolean to the other option (false -> true, true -> false)
     static func reverseFavorite(btn sender: UIButton){
         
+        // Get the Song timeStamp from the cell it self
+        let cell = sender.superview?.superview as! SongCell;
+        let timeStamp = cell.timeStamp!;
         
-//        //get the object
-//        let object = controller.object(at: indexPath)
-//        //update the data
-//        object.isAlive = value
-//        //command+s (save)
-//        DatabaseManager.manager.saveContext()
+        let controller = getSongDateFilter(timeStamp: timeStamp);
+        
+        let song = controller.fetchedObjects![0];
+        
+        //update the data
+        song.favorite = !song.favorite;
+        //command+s (save)
+        DatabaseManager.manager.saveContext();
+        
+        Util.setFavoriteBtnImage(favoriteBtn: sender, state: song.favorite);
+        
+        // TODO - Nico
+        // When new favorite is true
+        // add to favorite list
+        
+        // When new favorite is false
+        // remove from favorite list
+    }
+    
+    // By the timestamp (key in coredata) get the state of favorite
+    static func getSongFavoriteState(timeStamp: Date) -> Bool{
+        
+        let controller = getSongDateFilter(timeStamp: timeStamp);
+        
+        let song = controller.fetchedObjects![0];
+        
+        return song.favorite;
+        
+    }
+    
+    // Get only a specific data from coredata depend on the key (timestamp)
+    private static func getSongDateFilter(timeStamp: Date) -> NSFetchedResultsController<Song>{
+        // Setup request
+        let request : NSFetchRequest<Song> = Song.fetchRequest();
+        request.predicate =  NSPredicate(format: "%K == %@", #keyPath(Song.time_recog), timeStamp as CVarArg) // Filter can be add here
+        request.sortDescriptors = [NSSortDescriptor(key: "time_recog", ascending: true)]; // Sort depend on category
+        
+        // Setup results controller
+        let context = DatabaseManager.manager.persistentContainer.viewContext;
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "category", cacheName: nil);
+        
+        // Run query
+        try? controller.performFetch();
+        
+        return controller
     }
 }
