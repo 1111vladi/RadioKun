@@ -32,6 +32,7 @@ class SongFavoriteCell: SongCell {
     // Depend on the state of the favorite the icon will change(filled <-> empty)
    @IBAction func favoriteAction(_ sender: UIButton) {
         DBUtil.reverseFavorite(btn: sender);
+    
     }
         
         

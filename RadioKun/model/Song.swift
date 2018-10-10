@@ -11,11 +11,6 @@ import CoreData
 
 extension Song {
     
-    // Here add any other computed property if needed
-    // *
-    // *
-    
-    
     class func createSongWith(name: String,
                               band: String,
                               category: String,

@@ -35,7 +35,7 @@ class DBUtil {
 
         // Setup request
         let request : NSFetchRequest<Song> = Song.fetchRequest();
-        request.predicate = nil // Filter can be add here
+        request.predicate = NSPredicate(format: "favorite = true") // Only get the songs which are marked as favorite(true)
         request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]; // Sort depend on category
 
         // Setup results controller
@@ -69,11 +69,15 @@ class DBUtil {
         Util.setFavoriteBtnImage(favoriteBtn: sender, state: song.favorite);
         
         // TODO - Nico
-        // When new favorite is true
-        // add to favorite list
         
         // When new favorite is false
         // remove from favorite list
+        
+        let tableView = cell.superview as! UITableView;
+        let indexPath = tableView.indexPath(for: cell);
+        tableView.deleteRows(at: [indexPath!], with: .right);
+        
+        
     }
     
     // By the timestamp (key in coredata) get the state of favorite
@@ -91,7 +95,7 @@ class DBUtil {
     private static func getSongDateFilter(timeStamp: Date) -> NSFetchedResultsController<Song>{
         // Setup request
         let request : NSFetchRequest<Song> = Song.fetchRequest();
-        request.predicate =  NSPredicate(format: "%K == %@", #keyPath(Song.time_recog), timeStamp as CVarArg) // Filter can be add here
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(Song.time_recog), timeStamp as CVarArg) // Only get the song which fit with timestamp
         request.sortDescriptors = [NSSortDescriptor(key: "time_recog", ascending: true)]; // Sort depend on category
         
         // Setup results controller
