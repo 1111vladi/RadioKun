@@ -126,6 +126,7 @@ class RadioController: UIViewController, UITableViewDataSource{
                 guard let music = metadata["music"] as? [[String: Any]] else {
                     return
                 }
+                
                 // Band Name
                 guard let artists = music[0]["artists"] as? [[String: Any]] else {
                     return
@@ -133,16 +134,20 @@ class RadioController: UIViewController, UITableViewDataSource{
                 guard let name = artists[0]["name"] as? String else {
                     return
                 }
+                
+                // Genre Name
+                guard let genres = music[0]["genres"] as? [[String: Any]] else{
+                    return
+                }
+                guard let genreName = genres[0]["name"] as? String else {
+                    return
+                }
+                print(genreName);
+                
                 // Song Name
                 guard let title = music[0]["title"] as? String else {
                     return
                 }
-                // TODO - Vlad
-                // Date - get the current date and time
-                //        let currentDateTime = Date();
-                //
-                //        // Put song
-                //        Song.createSongWith(name: radioLbl.text!, band: radioUrl, category: "maybe", favorite: false, timeRecognize: currentDateTime);
                 
                 // To move to the next Controller
                 let storyboard = UIStoryboard(name: "Main", bundle: nil);
@@ -152,6 +157,14 @@ class RadioController: UIViewController, UITableViewDataSource{
                 // This is the RecognitionController constant variable that is used for navigation
                 self.navigationController?.pushViewController(resultController, animated: true);
                 self.alert?.dismiss(animated: true, completion: nil);
+                
+                // TODO - Vlad
+                // Date - get the current date and time
+                let currentDateTime = Date();
+                
+                // Put song
+                Song.createSongWith(name: name, band: title, category: genreName, favorite: false, timeRecognize: currentDateTime);
+                
             } else {
                 self.alert?.dismiss(animated: true, completion: nil);
                 self.alert2 = UIAlertController(title: "Song not found", message: "Please try again", preferredStyle: .alert)
@@ -170,6 +183,8 @@ class RadioController: UIViewController, UITableViewDataSource{
     
     // Table
     // ----- START -----
+    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return stationDicArrKey.count;
     }
@@ -213,8 +228,6 @@ class RadioController: UIViewController, UITableViewDataSource{
     
     
     @IBAction func scanSongAction(_ sender: Any) {
-        // TODO - Vlad
-        // Change label if the scan failed
         songScan((Any).self);
         
         // Open the AlertController
@@ -287,30 +300,23 @@ class RadioController: UIViewController, UITableViewDataSource{
         // Reset reference for the current radio
         previousRadioSender = sender;
         
-        // TEST DB SONG - Vlad you can un-comment this to see how it works :P
-        // Date - get the current date and time
-//        let currentDateTime = Date();
-//
-//        // Put song
-//        Song.createSongWith(name: radioLbl.text!, band: radioUrl, category: "maybe", favorite: false, timeRecognize: currentDateTime);
-//
 //        // Get song
-//        let obj = DBUtil.fetchedResultsHistoryController();
-//        let songArr = obj.fetchedObjects!; // Array of all songs
-//
-//        // Initialize the date formatter and set the style
-//        let formatter = DateFormatter();
-//        formatter.dateFormat = "dd/M/yy HH:mm";
-//
-//        let formatterLong = DateFormatter();
-//        formatterLong.dateStyle = .long;
-//        formatterLong.timeStyle = .long;
-//
-//        // Show song
-//        for song in songArr {
-//            let printThis = song.name! + " " + song.band! + " " + formatter.string(from: song.time_recog!) + " " + formatterLong.string(from: song.time_recog!);
-//            print(printThis);
-//        }
+        let obj = DBUtil.fetchedResultsHistoryController();
+        let songArr = obj.fetchedObjects!; // Array of all songs
+
+        // Initialize the date formatter and set the style
+        let formatter = DateFormatter();
+        formatter.dateFormat = "dd/M/yy HH:mm";
+
+        let formatterLong = DateFormatter();
+        formatterLong.dateStyle = .long;
+        formatterLong.timeStyle = .long;
+
+        // Show song
+        for song in songArr {
+            let printThis = song.name! + " " + song.band! + " " + formatter.string(from: song.time_recog!) + " " + formatterLong.string(from: song.time_recog!);
+            print(printThis);
+        }
         
         
     }
