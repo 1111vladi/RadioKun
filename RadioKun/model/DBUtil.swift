@@ -73,10 +73,10 @@ class DBUtil {
         // When new favorite is false
         // remove from favorite list
         
-        let tableView = cell.superview as! UITableView;
-        let indexPath = tableView.indexPath(for: cell);
-        tableView.deleteRows(at: [indexPath!], with: .right);
-        
+//        let tableView = cell.superview as! UITableView;
+//        let indexPath = tableView.indexPath(for: cell);
+//        tableView.deleteRows(at: [indexPath!], with: .right);
+//
         
     }
     
