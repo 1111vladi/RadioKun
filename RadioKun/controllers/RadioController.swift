@@ -192,10 +192,16 @@ class RadioController: UIViewController, UITableViewDataSource{
     // Find Lyrics Method
 //     ----- START -----
     func findLyrics(_ songName: String, _ bandName: String) -> String {
-        // TODO - NICO!!! OVER HERE
         let apikey = "Tk7IikwaoN12CkCV1wocicLSsWntNT5e3DvGPidvtKk63kK4iakesZNc6smFVfDc";
+        
         var currentLyrics = "";
-        let urlString = "https://orion.apiseeds.com/api/music/lyric/\(bandName)/\(songName)?apikey=\(apikey)/";
+        // Enconde the names of each section so it could be convert to url when there characters which
+        // are in the parameters can't be convert to url(e.x: white space can't be convert to so enconding
+        // the space change it to %20, which can be convert)
+        let songNameEncoded = songName.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!;
+        let bandNameEncoded = bandName.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!;
+        // Preparation of url
+        let urlString = "https://orion.apiseeds.com/api/music/lyric/\(bandNameEncoded)/\(songNameEncoded)?apikey=\(apikey)";
         let url = URL(string: urlString)!;
 
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
@@ -226,10 +232,9 @@ class RadioController: UIViewController, UITableViewDataSource{
     }
     // ----- END -----
     
+    
     // Table
     // ----- START -----
-    
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return stationDicArrKey.count;
     }
@@ -294,7 +299,6 @@ class RadioController: UIViewController, UITableViewDataSource{
         self.present(alert!, animated: true, completion: nil)
         
         print("Amm which song is it..?");
-        
     }
     
     // Start scan
