@@ -11,6 +11,9 @@ import AVFoundation
 
 class RadioController: UIViewController, UITableViewDataSource{
     
+    // Apikey for Lyrics
+    private let apikey = "Tk7IikwaoN12CkCV1wocicLSsWntNT5e3DvGPidvtKk63kK4iakesZNc6smFVfDc";
+    
     // Global UIAlert
     private var alert : UIAlertController? = nil;
     private var alert2 : UIAlertController? = nil;
@@ -96,8 +99,7 @@ class RadioController: UIViewController, UITableViewDataSource{
             
         ];
         stationDicArrKey = Array(stationDicArr.keys);
-        
-       
+    
     }
     
     // Result Handler
@@ -148,17 +150,23 @@ class RadioController: UIViewController, UITableViewDataSource{
                 guard let title = music[0]["title"] as? String else {
                     return
                 }
+                // TODO - NICO!@%!@%
+                // If the text is in comment the "findSong" works and you move to the next screen
+                // Try using "Opeth Damnation"
+                let text = self.findLyrics(title, name);
+                print(text);
                 
                 // To move to the next Controller
                 let storyboard = UIStoryboard(name: "Main", bundle: nil);
                 let resultController = storyboard.instantiateViewController(withIdentifier: "ResultController") as! ResultController;
                 resultController.bandName = name;
                 resultController.songName = title;
+                // TODO - NICO!!! OVER HERE!!!
+                resultController.lyricsName = text;
                 // This is the RecognitionController constant variable that is used for navigation
                 self.navigationController?.pushViewController(resultController, animated: true);
                 self.alert?.dismiss(animated: true, completion: nil);
                 
-                // TODO - Vlad
                 // Date - get the current date and time
                 let currentDateTime = Date();
                 
@@ -180,6 +188,43 @@ class RadioController: UIViewController, UITableViewDataSource{
             self._start = false;
         }
     }
+    
+    // Find Lyrics Method
+//     ----- START -----
+    func findLyrics(_ songName: String, _ bandName: String) -> String {
+        // TODO - NICO!!! OVER HERE
+        let apikey = "Tk7IikwaoN12CkCV1wocicLSsWntNT5e3DvGPidvtKk63kK4iakesZNc6smFVfDc";
+        var currentLyrics = "";
+        let urlString = "https://orion.apiseeds.com/api/music/lyric/\(bandName)/\(songName)?apikey=\(apikey)/";
+        let url = URL(string: urlString)!;
+
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard let data = data else { return }
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: [])else{return}
+            guard let jsonObject = json as? [String: Any] else {
+                return
+            }
+            guard let result = jsonObject["result"] as? [String: Any] else {
+                return
+            }
+            guard let track = result["track"] as? [String: Any] else {
+                return
+            }
+            guard let lyrics = track["text"] as? String else {
+                return
+            }
+
+            currentLyrics = lyrics;
+            print(String(data: data, encoding: .utf8)!)
+        } // End result scope - EVERYTHING DIIIEEEES
+
+        task.resume();
+        return currentLyrics;
+
+
+
+    }
+    // ----- END -----
     
     // Table
     // ----- START -----

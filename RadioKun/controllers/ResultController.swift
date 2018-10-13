@@ -9,16 +9,20 @@
 import UIKit
 
 class ResultController: UIViewController {
+    
+    @IBOutlet weak var lyricsLabel: UILabel!
     @IBOutlet weak var bandLabel: UILabel!
+    @IBOutlet weak var songLabel: UILabel!
+    public var lyricsName = "";
     public var bandName = "";
     public var songName = "";
     public var genreName = "";
-    @IBOutlet weak var songLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         songLabel?.text = songName;
         bandLabel?.text = bandName;
+        lyricsLabel?.text = lyricsName;
         // Do any additional setup after loading the view.
     }
     

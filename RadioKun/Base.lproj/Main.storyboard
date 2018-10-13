@@ -34,7 +34,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lA-0U-rkj">
-                                                    <rect key="frame" x="254" y="-3.5" width="50" height="50.5"/>
+                                                    <rect key="frame" x="279" y="9.5" width="25" height="25"/>
                                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <state key="normal" image="play"/>
                                                 </button>
@@ -122,14 +122,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOC-b1-khO">
-                                                    <rect key="frame" x="254" y="16" width="50" height="11.5"/>
+                                                    <rect key="frame" x="279" y="16" width="25" height="11.5"/>
                                                     <state key="normal" image="add_favorite"/>
                                                     <connections>
                                                         <action selector="favoriteAction:" destination="n6y-S5-980" eventType="touchUpInside" id="CWT-9h-BIU"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLe-P1-EBN">
-                                                    <rect key="frame" x="196" y="-3.5" width="50" height="50.5"/>
+                                                    <rect key="frame" x="246" y="9.5" width="25" height="25"/>
                                                     <state key="normal" image="facebook"/>
                                                     <connections>
                                                         <action selector="facebookAction:" destination="n6y-S5-980" eventType="touchUpInside" id="onv-kb-JxS"/>
@@ -292,14 +292,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1F-Xa-4RY">
-                                                    <rect key="frame" x="254" y="16" width="50" height="11.5"/>
+                                                    <rect key="frame" x="279" y="16" width="25" height="11.5"/>
                                                     <state key="normal" image="add_favorite"/>
                                                     <connections>
                                                         <action selector="favoriteAction:" destination="FDm-cG-AxL" eventType="touchUpInside" id="JpN-gD-5NM"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHO-Qz-Zaj">
-                                                    <rect key="frame" x="196" y="-3.5" width="50" height="50.5"/>
+                                                    <rect key="frame" x="246" y="9.5" width="25" height="25"/>
                                                     <state key="normal" image="facebook"/>
                                                     <connections>
                                                         <action selector="facebookAction:" destination="FDm-cG-AxL" eventType="touchUpInside" id="m9G-j4-ixN"/>
@@ -417,45 +417,58 @@ CQ
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yjp-gk-6Ct">
-                                <rect key="frame" x="8" y="231" width="304" height="27.5"/>
+                                <rect key="frame" x="8" y="211" width="304" height="27.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0x-Ya-gj1">
-                                <rect key="frame" x="8" y="416.5" width="304" height="27.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <rect key="frame" x="8" y="246" width="304" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyrics" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4u-0m-Sd2">
+                                <rect key="frame" x="8" y="343" width="304" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="E0x-Ya-gj1" firstAttribute="centerX" secondItem="Yjp-gk-6Ct" secondAttribute="centerX" id="AGH-Pw-Uir"/>
-                            <constraint firstItem="Yjp-gk-6Ct" firstAttribute="leading" secondItem="tn6-ZE-pLz" secondAttribute="leading" constant="8" id="FeG-TQ-ZPH"/>
-                            <constraint firstItem="E0x-Ya-gj1" firstAttribute="width" secondItem="Yjp-gk-6Ct" secondAttribute="width" id="NdG-P9-Q8M"/>
-                            <constraint firstAttribute="trailing" secondItem="Yjp-gk-6Ct" secondAttribute="trailing" constant="8" id="VPF-Sw-hOk"/>
-                            <constraint firstItem="E0x-Ya-gj1" firstAttribute="top" secondItem="Yjp-gk-6Ct" secondAttribute="bottom" constant="158" id="jxb-Uf-xF7"/>
-                            <constraint firstItem="Yjp-gk-6Ct" firstAttribute="top" secondItem="Nnw-f2-VNS" secondAttribute="bottom" constant="211" id="sSf-c9-QMp"/>
+                            <constraint firstAttribute="trailing" secondItem="Yjp-gk-6Ct" secondAttribute="trailing" constant="8" id="3dt-ZA-3n3"/>
+                            <constraint firstItem="I4u-0m-Sd2" firstAttribute="centerX" secondItem="tn6-ZE-pLz" secondAttribute="centerX" id="4X5-rD-lIN"/>
+                            <constraint firstItem="Yjp-gk-6Ct" firstAttribute="top" secondItem="Nnw-f2-VNS" secondAttribute="bottom" constant="191" id="5zm-on-CGK"/>
+                            <constraint firstItem="E0x-Ya-gj1" firstAttribute="leading" secondItem="tn6-ZE-pLz" secondAttribute="leading" constant="8" id="ASV-DE-T28"/>
+                            <constraint firstItem="I4u-0m-Sd2" firstAttribute="top" secondItem="Nnw-f2-VNS" secondAttribute="bottom" constant="323" id="BD3-Ns-MGj"/>
+                            <constraint firstAttribute="trailing" secondItem="E0x-Ya-gj1" secondAttribute="trailing" constant="8" id="HN8-zb-FSw"/>
+                            <constraint firstItem="Yjp-gk-6Ct" firstAttribute="leading" secondItem="tn6-ZE-pLz" secondAttribute="leading" constant="8" id="JzE-Cf-imL"/>
+                            <constraint firstAttribute="trailing" secondItem="I4u-0m-Sd2" secondAttribute="trailing" constant="8" id="OqU-DF-w44"/>
+                            <constraint firstItem="E0x-Ya-gj1" firstAttribute="leading" secondItem="Yjp-gk-6Ct" secondAttribute="leading" id="Q8S-XR-3Y7"/>
+                            <constraint firstItem="Vjo-zI-3Ij" firstAttribute="top" secondItem="E0x-Ya-gj1" secondAttribute="bottom" constant="286" id="j6P-Zu-U4l"/>
+                            <constraint firstItem="I4u-0m-Sd2" firstAttribute="leading" secondItem="E0x-Ya-gj1" secondAttribute="leading" id="r2Y-cs-HEp"/>
+                            <constraint firstItem="I4u-0m-Sd2" firstAttribute="leading" secondItem="tn6-ZE-pLz" secondAttribute="leading" constant="8" id="z3T-wP-IfR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bandLabel" destination="Yjp-gk-6Ct" id="1I6-Wz-5gb"/>
+                        <outlet property="lyricsLabel" destination="I4u-0m-Sd2" id="QRu-lj-bqD"/>
                         <outlet property="songLabel" destination="E0x-Ya-gj1" id="BZp-Co-0Yb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0z-0h-sAH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="-289"/>
+            <point key="canvasLocation" x="1800" y="-289.43661971830988"/>
         </scene>
     </scenes>
     <resources>
-        <image name="add_favorite" width="50" height="50"/>
-        <image name="empty_star" width="50" height="50"/>
-        <image name="facebook" width="50" height="50"/>
-        <image name="history_list" width="50" height="50"/>
-        <image name="play" width="50" height="50"/>
-        <image name="radio" width="50" height="50"/>
-        <image name="scan_song" width="75" height="75"/>
+        <image name="add_favorite" width="25" height="25"/>
+        <image name="empty_star" width="25" height="25"/>
+        <image name="facebook" width="25" height="25"/>
+        <image name="history_list" width="25" height="25"/>
+        <image name="play" width="25" height="25"/>
+        <image name="radio" width="25" height="25"/>
+        <image name="scan_song" width="37" height="37"/>
     </resources>
 </document>
