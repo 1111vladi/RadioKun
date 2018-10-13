@@ -30,6 +30,7 @@ class SongHistoryCell: SongCell {
         // Parse Date -> String
         timestampLbl.text = formatter.string(from: song.time_recog!);
         
+        
     }
     
     // Add to favorite or remove from there

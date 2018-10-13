@@ -17,7 +17,7 @@ class DBUtil {
         // Setup request
         let request : NSFetchRequest<Song> = Song.fetchRequest();
         request.predicate = nil // Filter can be add here
-        request.sortDescriptors = [NSSortDescriptor(key: "time_recog", ascending: true)]; // The newest songs will be first
+        request.sortDescriptors = [NSSortDescriptor(key: "time_recog", ascending: false)]; // The newest songs will be first
         
         // Setup results controller
         let context = DatabaseManager.manager.persistentContainer.viewContext;
@@ -67,16 +67,6 @@ class DBUtil {
         DatabaseManager.manager.saveContext();
         
         Util.setFavoriteBtnImage(favoriteBtn: sender, state: song.favorite);
-        
-        // TODO - Nico
-        
-        // When new favorite is false
-        // remove from favorite list
-        
-//        let tableView = cell.superview as! UITableView;
-//        let indexPath = tableView.indexPath(for: cell);
-//        tableView.deleteRows(at: [indexPath!], with: .right);
-//
         
     }
     

@@ -100,6 +100,11 @@ class RadioController: UIViewController, UITableViewDataSource{
         ];
         stationDicArrKey = Array(stationDicArr.keys);
     
+        // TEST - Dummy data
+//        // Date - get the current date and time
+//        let currentDateTime = Date();
+//        // Put song
+//        Song.createSongWith(name: "Nick", band: "Crushers", category: "toBad", favorite: false, timeRecognize: currentDateTime, lyric: "Non");
     }
     
     // Result Handler
@@ -150,19 +155,15 @@ class RadioController: UIViewController, UITableViewDataSource{
                 guard let title = music[0]["title"] as? String else {
                     return
                 }
-                // TODO - NICO!@%!@%
-                // If the text is in comment the "findSong" works and you move to the next screen
-                // Try using "Opeth Damnation"
-                let text = self.findLyrics(title, name);
-                print(text);
+                
+                let lyric = self.findLyrics(title, name);
                 
                 // To move to the next Controller
                 let storyboard = UIStoryboard(name: "Main", bundle: nil);
                 let resultController = storyboard.instantiateViewController(withIdentifier: "ResultController") as! ResultController;
                 resultController.bandName = name;
                 resultController.songName = title;
-                // TODO - NICO!!! OVER HERE!!!
-                resultController.lyricsName = text;
+                resultController.lyricsName = lyric;
                 // This is the RecognitionController constant variable that is used for navigation
                 self.navigationController?.pushViewController(resultController, animated: true);
                 self.alert?.dismiss(animated: true, completion: nil);
@@ -171,7 +172,7 @@ class RadioController: UIViewController, UITableViewDataSource{
                 let currentDateTime = Date();
                 
                 // Put song
-                Song.createSongWith(name: name, band: title, category: genreName, favorite: false, timeRecognize: currentDateTime);
+                Song.createSongWith(name: name, band: title, category: genreName, favorite: false, timeRecognize: currentDateTime, lyric: lyric);
                 
             } else {
                 self.alert?.dismiss(animated: true, completion: nil);
@@ -194,7 +195,7 @@ class RadioController: UIViewController, UITableViewDataSource{
     func findLyrics(_ songName: String, _ bandName: String) -> String {
         let apikey = "Tk7IikwaoN12CkCV1wocicLSsWntNT5e3DvGPidvtKk63kK4iakesZNc6smFVfDc";
         
-        var currentLyrics = "";
+        var currentLyrics = "No Lyrics... =[";
         // Enconde the names of each section so it could be convert to url when there characters which
         // are in the parameters can't be convert to url(e.x: white space can't be convert to so enconding
         // the space change it to %20, which can be convert)
@@ -226,9 +227,6 @@ class RadioController: UIViewController, UITableViewDataSource{
 
         task.resume();
         return currentLyrics;
-
-
-
     }
     // ----- END -----
     

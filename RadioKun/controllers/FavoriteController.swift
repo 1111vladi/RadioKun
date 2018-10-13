@@ -26,7 +26,6 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         self.controller = DBUtil.fetchedResultsFavoriteController();
         
-        NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidChange(_:)), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,53 +33,6 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.reloadData(); // Use to update the list with any change that happen in core data
     }
     
-    
-    @objc func contextObjectsDidChange(_ notification: Notification) {
-        print(notification)
-//        print(notification.userInfo)
-//        print(notification.description)
-        if let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] as? Set<Song>, !updatedObjects.isEmpty {
-            print("Fav");
-            print(updatedObjects.first?.favorite);
-            
-//            // Get the cell to delete
-//            let cell = SongFavoriteCell();
-//            var song : Song?;
-//            for songObj in controller.fetchedObjects!{
-//                // Time_recog is the key for each song in coredata
-//                // If it found the song in the list of fetchedObjects
-//                if songObj.time_recog! == updatedObjects.first?.time_recog {
-////                    song = updatedObjects.first!;
-//                    print(updatedObjects.first?.name);
-//                    print(songObj.name);
-//                    song = songObj;
-////                     cell.configure(updatedObjects.first!);
-//                }
-//            }
-//            
-//            if let songDel = song {
-//                cell.configure(songDel);
-//            } else {
-//                return
-//            }
-//            
-////            guard let songDel = song as! Song! else {
-////                return
-////            }
-//            
-//           
-//            
-//            // Get indexPath to delete
-//            let indexPath = tableView.indexPath(for: cell);
-//            // Delete it
-//            tableView.deleteRows(at: [indexPath!], with: .right); // Use to update the list with any change that happen in core data
-        }
-        
-//        if let updatedObjects = notification.userInfo?[NSUpdatedObjectsKey] as? Set<NSManagedObject>, !updatedObjects.isEmpty {
-//            print(updatedObjects)
-//        }
-        
-    }
     
     
     // Table
@@ -106,7 +58,7 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! SongFavoriteCell;
         
         // Set data in the cell
-        let song = controller.fetchedObjects![indexPath.row];
+        let song = controller.object(at: indexPath); // This will get the object with the right section & row
         cell.configure(song);
         
         // Color configuration
@@ -134,78 +86,22 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         header.textLabel?.font = UIFont(name: "Helvetica-Bold", size: 16);
         tableView.separatorColor = theme.mainColor;
     }
-    // ----- END -----
     
-    //*** Support Edit
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
-//
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        //we only support delete
-//        guard editingStyle == .delete else{
-//            return
-//        }
-//
-//        let context = DatabaseManager.manager.persistentContainer.viewContext
-//        let object = controller.object(at: indexPath)
-//
-//        context.delete(object)
-//        DatabaseManager.manager.saveContext()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Open the ViewController when successfully recognize a song
+        // to show the full details of this song (song, band & lyrics)
+        // Get Song
+        let song = controller.object(at: indexPath);
         
-        
+        // Move to the next Controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        let resultController = storyboard.instantiateViewController(withIdentifier: "ResultController") as! ResultController;
+        resultController.bandName = song.band!;
+        resultController.songName = song.name!;
+        resultController.lyricsName = song.lyric!;
+        // This is the RecognitionController constant variable that is used for navigation
+        navigationController?.pushViewController(resultController, animated: true);
     }
-    
-    //***
+    // ----- END -----
+}
 
-//}
-//
-//extension FavoriteController : NSFetchedResultsControllerDelegate
-//{
-//
-//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        //hey tableview, from now on you will get a bulk of command, please queue them and DO NOT do anything, yet.
-//        tableView.beginUpdates()
-//    }
-//
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        //hey again, I finished with my junk, you can start commiting the queued commands now
-//        tableView.endUpdates()
-//    }
-//
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-//
-//        let indexSet = IndexSet(integer: sectionIndex)
-//
-//        switch type {
-//        case .insert:
-//            tableView.insertSections(indexSet, with: .automatic)
-//        case .delete:
-//            tableView.deleteSections(indexSet, with: .automatic)
-//        default:
-//            break
-//        }
-//
-//    }
-//
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-//
-//        switch type {
-//        case .insert: //new target
-//            tableView.insertRows(at: [newIndexPath!], with: .right)
-//        case .delete: //target deleted
-//            tableView.deleteRows(at: [indexPath!], with: .left)
-//        case .move: //order of target changed (affected by sort desriptors)
-//            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-//        case .update:
-//            print("Updating Table Favorite");
-////            //a target's data updated , refresh cell content0
-////            let data = self.controller.object(at: indexPath!)
-////            if let cell = tableView.cellForRow(at: indexPath!) as? SongCell{
-////                cell.configure(with: data)
-////            }
-//
-//        }
-//
-//    }
-//}

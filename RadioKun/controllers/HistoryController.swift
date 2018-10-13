@@ -26,7 +26,6 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         tableView.delegate = self
         self.controller = DBUtil.fetchedResultsHistoryController();
         
-        tableView.estimatedRowHeight = 1000.0;
     }
     
     
@@ -34,23 +33,12 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         tableView.reloadData(); // Use to update the list with any change that happen in core data
     }
     
-    //MARK: - TableView
     
     //how many groups (sections) of lines (rows)
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1; // No need to separe the history in sections
     }
     
-//    // TEST
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//        return UITableView.automaticDimension
-//
-//    }
-//
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
     
     // Number of lines for each group
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,9 +76,20 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
     
     
     // TODO - Add once RecognizeController is done
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        // Open the ViewController when successfully recognize a song
-//        // to show the full details of this song (song, band & lyrics)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Open the ViewController when successfully recognize a song
+        // to show the full details of this song (song, band & lyrics)
+        // Get Song
+        let song = controller.fetchedObjects![indexPath.row];
+        
+        // Move to the next Controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        let resultController = storyboard.instantiateViewController(withIdentifier: "ResultController") as! ResultController;
+        resultController.bandName = song.band!;
+        resultController.songName = song.name!;
+        resultController.lyricsName = song.lyric!;
+        // This is the RecognitionController constant variable that is used for navigation
+        navigationController?.pushViewController(resultController, animated: true);
+    }
     
 }

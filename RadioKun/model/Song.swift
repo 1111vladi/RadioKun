@@ -15,7 +15,8 @@ extension Song {
                               band: String,
                               category: String,
                               favorite: Bool,
-                              timeRecognize: Date){
+                              timeRecognize: Date,
+                              lyric: String){
         
         let context = DatabaseManager.manager.persistentContainer.viewContext;
         // Create the data object to add in CoreData
@@ -27,6 +28,7 @@ extension Song {
         song.category = category;
         song.favorite = favorite;
         song.time_recog = timeRecognize;
+        song.lyric = lyric;
         
         // Save in CoreData
         DatabaseManager.manager.saveContext();
