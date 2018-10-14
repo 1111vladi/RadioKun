@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import Lottie
+//import Lottie
 
 class RadioController: UIViewController, UITableViewDataSource{
     
@@ -119,8 +119,6 @@ class RadioController: UIViewController, UITableViewDataSource{
         "Jewish Rock":"http://sc11.spacialnet.com/stream/2554/",
         "Gorindo":"http://streaming.radionomy.com/Gorindo?lang=en-US&appName=iTunes.m3u",
             
-            self.findLyrics("Poison", "Alice Cooper", "Rock"); // TEST
-            
         ];
         stationDicArrKey = Array(stationDicArr.keys);
     }
@@ -130,7 +128,6 @@ class RadioController: UIViewController, UITableViewDataSource{
     {
         
         DispatchQueue.main.async {
-            //            self.resultView.text = result;
             let data: Data? = result.data(using: .utf8) // non-nil
             guard let json = try? JSONSerialization.jsonObject(with: data!, options: []) else{return}
             guard let jsonObject = json as? [String: Any] else {
@@ -142,17 +139,14 @@ class RadioController: UIViewController, UITableViewDataSource{
             guard let msg = status["msg"] as? String else {
                 return
             }
-            
-            self.findLyrics("Poison", "Alice Cooper", "Rock"); // TEST
-            
+            //            self.findLyrics("All I Wanna Do", "Halestorm", "Cool"); // TEST
             if msg == "Success" {
                 guard let metadata = jsonObject["metadata"] as? [String: Any] else{
                     return
                 }
                 guard let music = metadata["music"] as? [[String: Any]] else {
-               
-                self.findLyrics(title, name, genreName);
-                
+                    return
+                }
                 
                 guard let artists = music[0]["artists"] as? [[String: Any]] else {
                     return
@@ -168,7 +162,6 @@ class RadioController: UIViewController, UITableViewDataSource{
                 guard let genreName = genres[0]["name"] as? String else {
                     return
                 }
-                print(genreName);
                 
                 // Song Name
                 guard let title = music[0]["title"] as? String else {
@@ -176,8 +169,6 @@ class RadioController: UIViewController, UITableViewDataSource{
                 }
                
                 self.findLyrics(title, name, genreName);
-                
-                
                 
             } else {
                 self.alert?.dismiss(animated: true, completion: nil);
@@ -197,7 +188,7 @@ class RadioController: UIViewController, UITableViewDataSource{
     
    
     // Find Lyrics Method
-//     ----- START -----
+    //   ----- START -----
     func findLyrics(_ songName: String, _ bandName: String, _ genreName: String) {
         let apikey = "Tk7IikwaoN12CkCV1wocicLSsWntNT5e3DvGPidvtKk63kK4iakesZNc6smFVfDc";
         
@@ -226,11 +217,10 @@ class RadioController: UIViewController, UITableViewDataSource{
                 return
             }
             DispatchQueue.main.async() {
+                // Once the results are right and everything works, finish the scan and open ResultController
                 self.scanDone(songName: songName, bandName: bandName, lyric: lyrics, genreName: genreName);
             }
-            
-            currentLyrics = lyrics;
-            print(String(data: data, encoding: .utf8)!)
+           
         } // End result scope - EVERYTHING DIIIEEEES
 
         task.resume();
@@ -335,11 +325,8 @@ class RadioController: UIViewController, UITableViewDataSource{
         self.navigationController?.pushViewController(resultController, animated: true);
         self.alert?.dismiss(animated: true, completion: nil);
         
-        
-        
         // Date - get the current date and time
         let currentDateTime = Date();
-        
         // Put song
         Song.createSongWith(name: songName, band: bandName, category: genreName, favorite: false, timeRecognize: currentDateTime, lyric: lyric);
     }

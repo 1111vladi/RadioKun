@@ -18,6 +18,7 @@ class ResultController: UIViewController {
             bandLabel.makeOutLine(oulineColor: UIColor.black, foregroundColor: UIColor.white)
         }
     }
+    @IBOutlet weak var lyricList: UITextView!
     
     @IBOutlet weak var songLabel: UILabel!{
         didSet{
@@ -39,9 +40,9 @@ class ResultController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = theme.backgroundColor;
 
-        lyricsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20);
-        lyricsLabel.textColor = UIColor.white;
-        lyricsLabel?.text = lyricsName;
+        lyricList.font = UIFont(name: "ArialRoundedMTBold", size: 20);
+        lyricList.textColor = UIColor.white;
+        lyricList?.text = lyricsName;
         
     }
     
