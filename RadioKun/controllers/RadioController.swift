@@ -11,9 +11,7 @@ import AVFoundation
 
 class RadioController: UIViewController, UITableViewDataSource{
     
-    // Apikey for Lyrics
-    private let apikey = "Tk7IikwaoN12CkCV1wocicLSsWntNT5e3DvGPidvtKk63kK4iakesZNc6smFVfDc";
-    
+  
     // Global UIAlert
     private var alert : UIAlertController? = nil;
     private var alert2 : UIAlertController? = nil;
@@ -124,8 +122,9 @@ class RadioController: UIViewController, UITableViewDataSource{
             guard let msg = status["msg"] as? String else {
                 return
             }
-            print(result) // delectus aut autem
-        
+            
+            self.findLyrics("Poison", "Alice Cooper", "Rock"); // TEST
+            
             if msg == "Success" {
                 guard let metadata = jsonObject["metadata"] as? [String: Any] else{
                     return
@@ -155,24 +154,10 @@ class RadioController: UIViewController, UITableViewDataSource{
                 guard let title = music[0]["title"] as? String else {
                     return
                 }
+               
+                self.findLyrics(title, name, genreName);
                 
-                let lyric = self.findLyrics(title, name);
                 
-                // To move to the next Controller
-                let storyboard = UIStoryboard(name: "Main", bundle: nil);
-                let resultController = storyboard.instantiateViewController(withIdentifier: "ResultController") as! ResultController;
-                resultController.bandName = name;
-                resultController.songName = title;
-                resultController.lyricsName = lyric;
-                // This is the RecognitionController constant variable that is used for navigation
-                self.navigationController?.pushViewController(resultController, animated: true);
-                self.alert?.dismiss(animated: true, completion: nil);
-                
-                // Date - get the current date and time
-                let currentDateTime = Date();
-                
-                // Put song
-                Song.createSongWith(name: name, band: title, category: genreName, favorite: false, timeRecognize: currentDateTime, lyric: lyric);
                 
             } else {
                 self.alert?.dismiss(animated: true, completion: nil);
@@ -190,12 +175,12 @@ class RadioController: UIViewController, UITableViewDataSource{
         }
     }
     
+   
     // Find Lyrics Method
 //     ----- START -----
-    func findLyrics(_ songName: String, _ bandName: String) -> String {
+    func findLyrics(_ songName: String, _ bandName: String, _ genreName: String) {
         let apikey = "Tk7IikwaoN12CkCV1wocicLSsWntNT5e3DvGPidvtKk63kK4iakesZNc6smFVfDc";
         
-        var currentLyrics = "No Lyrics... =[";
         // Enconde the names of each section so it could be convert to url when there characters which
         // are in the parameters can't be convert to url(e.x: white space can't be convert to so enconding
         // the space change it to %20, which can be convert)
@@ -220,13 +205,13 @@ class RadioController: UIViewController, UITableViewDataSource{
             guard let lyrics = track["text"] as? String else {
                 return
             }
-
-            currentLyrics = lyrics;
-            print(String(data: data, encoding: .utf8)!)
+            DispatchQueue.main.async() {
+                self.scanDone(songName: songName, bandName: bandName, lyric: lyrics, genreName: genreName);
+            }
+            
         } // End result scope - EVERYTHING DIIIEEEES
 
         task.resume();
-        return currentLyrics;
     }
     // ----- END -----
     
@@ -297,6 +282,8 @@ class RadioController: UIViewController, UITableViewDataSource{
         self.present(alert!, animated: true, completion: nil)
         
         print("Amm which song is it..?");
+        
+        
     }
     
     // Start scan
@@ -313,6 +300,26 @@ class RadioController: UIViewController, UITableViewDataSource{
         self._client?.stopRecordRec()
         self._start = false;
         print("Scan stopped, no song for you")
+    }
+    
+    private func scanDone(songName: String, bandName: String, lyric: String, genreName: String){
+        // To move to the next Controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        let resultController = storyboard.instantiateViewController(withIdentifier: "ResultController") as! ResultController;
+        resultController.bandName = bandName;
+        resultController.songName = songName;
+        resultController.lyricsName = lyric;
+        // This is the RecognitionController constant variable that is used for navigation
+        self.navigationController?.pushViewController(resultController, animated: true);
+        self.alert?.dismiss(animated: true, completion: nil);
+        
+        
+        
+        // Date - get the current date and time
+        let currentDateTime = Date();
+        
+        // Put song
+        Song.createSongWith(name: songName, band: bandName, category: genreName, favorite: false, timeRecognize: currentDateTime, lyric: lyric);
     }
     
     // Give the radio url and play the radio
