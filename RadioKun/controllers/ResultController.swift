@@ -26,10 +26,7 @@ class ResultController: UIViewController {
             songLabel.makeOutLine(oulineColor: UIColor.black, foregroundColor: UIColor.white)
         }
     }
-    
-    
-    
-    
+
     public var lyricsName = "";
     public var bandName = "";
     public var songName = "";
@@ -42,29 +39,16 @@ class ResultController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = theme.backgroundColor;
 
-        
-//        songLabel.font = UIFont(name: "ArialRoundedMTBold", size: 24);
-//        songLabel.textColor = UIColor.white;
-//        songLabel?.text = songName;
-        
-//        bandLabel.font = UIFont(name: "ArialRoundedMTBold", size: 36);
-//        bandLabel.textColor = UIColor.white;
-//        bandLabel?.text = bandName;
-        
-        lyricsLabel.font = UIFont(name: "Arial", size: 20);
+        lyricsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20);
         lyricsLabel.textColor = UIColor.white;
         lyricsLabel?.text = lyricsName;
         
     }
     
- 
-    
-    
 }
 
-
 extension UILabel{
-    
+    // Stroke effect
     func makeOutLine(oulineColor: UIColor, foregroundColor: UIColor) {
         let strokeTextAttributes = [
             NSAttributedString.Key.strokeColor : oulineColor,
@@ -74,7 +58,7 @@ extension UILabel{
         ] as [NSAttributedString.Key : Any]
         self.attributedText = NSMutableAttributedString(string: self.text ?? "", attributes: strokeTextAttributes)
     }
-    
+    // UnderLine effect
     func underline() {
         if let textString = self.text {
             let attributedString = NSMutableAttributedString(string: textString);   attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: attributedString.length))

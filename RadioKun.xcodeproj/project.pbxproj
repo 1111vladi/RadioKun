@@ -29,7 +29,6 @@
 		753CBD8D216A5589002B4D6F /* ResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753CBD8C216A5589002B4D6F /* ResultController.swift */; };
 		A24E360E1D5B74F600C98C28 /* LICENSE.MD in Sources */ = {isa = PBXBuildFile; fileRef = A24E360D1D5B74F600C98C28 /* LICENSE.MD */; };
 		A2D968871CA512B0009618E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D968861CA512B0009618E1 /* AppDelegate.swift */; };
-		A2D968891CA512B0009618E1 /* RecognitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D968881CA512B0009618E1 /* RecognitionController.swift */; };
 		A2D9688C1CA512B0009618E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2D9688A1CA512B0009618E1 /* Main.storyboard */; };
 		A2D9688E1CA512B0009618E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2D9688D1CA512B0009618E1 /* Assets.xcassets */; };
 		A2D968911CA512B0009618E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2D9688F1CA512B0009618E1 /* LaunchScreen.storyboard */; };
@@ -66,7 +65,6 @@
 		A24E360D1D5B74F600C98C28 /* LICENSE.MD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.MD; sourceTree = "<group>"; };
 		A2D968831CA512AF009618E1 /* RadioKun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioKun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D968861CA512B0009618E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A2D968881CA512B0009618E1 /* RecognitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionController.swift; sourceTree = "<group>"; };
 		A2D9688B1CA512B0009618E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A2D9688D1CA512B0009618E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2D968901CA512B0009618E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				03FEAC18216BED89004463F0 /* FavoriteController.swift */,
 				03E850DD215EE8D200E23C60 /* TabController.swift */,
 				03E850DF215EEB1800E23C60 /* NavController.swift */,
-				A2D968881CA512B0009618E1 /* RecognitionController.swift */,
 				753CBD8C216A5589002B4D6F /* ResultController.swift */,
 			);
 			path = controllers;
@@ -340,7 +337,6 @@
 				03FEAC1B216C0629004463F0 /* Util.swift in Sources */,
 				03FF7E05216182A1004D3C5D /* SongHistoryCell.swift in Sources */,
 				03E850DC215EDF6500E23C60 /* ThemeManager.swift in Sources */,
-				A2D968891CA512B0009618E1 /* RecognitionController.swift in Sources */,
 				753CBD8D216A5589002B4D6F /* ResultController.swift in Sources */,
 				03FF7E0021614FB7004D3C5D /* DBUtil.swift in Sources */,
 				03FF7E0221616135004D3C5D /* HistoryController.swift in Sources */,

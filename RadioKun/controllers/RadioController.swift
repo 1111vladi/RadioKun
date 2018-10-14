@@ -12,17 +12,31 @@ import Lottie
 
 class RadioController: UIViewController, UITableViewDataSource{
     
+    // Some stupid animantion that fucks my scan function
+//    @IBOutlet weak var recordLabel: UIBarButtonItem!{
+//        didSet {
+//            let icon = UIImage(named: "recordb");
+//            let iconSize = CGRect(x: 0, y: 0, width: 35, height: 35);
+//            let iconButton = UIButton(frame: iconSize);
+//            iconButton.setBackgroundImage(icon, for: .normal);
+//            recordLabel.customView = iconButton;
+//
+//            recordLabel.customView!.transform = CGAffineTransform(scaleX: 0, y: 0)
+//
+//            UIView.animate(withDuration: 1.0,
+//                                       delay: 0.5,
+//                                       usingSpringWithDamping: 0.5,
+//                                       initialSpringVelocity: 10,
+//                                       options: .curveLinear,
+//                                       animations: {
+//                                        self.recordLabel.customView!.transform = CGAffineTransform.identity
+//            },
+//                                       completion: nil
+//            )
+//    }
+//
+//}
 
-    
-            
-        
-    
-    
-    
-    
-    
-    // Record Animation
-//    var animation = LOTAnimationView(name: "record");
     
     // Apikey for Lyrics
     private let apikey = "Tk7IikwaoN12CkCV1wocicLSsWntNT5e3DvGPidvtKk63kK4iakesZNc6smFVfDc";
@@ -56,13 +70,7 @@ class RadioController: UIViewController, UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        
-//        animation.frame = CGRect(x: -35, y: 40, width: 75, height: 75);
-//        animation.contentMode = .scaleAspectFill;
-//        animation.loopAnimation = true;
-//        view.addSubview(animation);
-//        animation.play();
-        
+
         // Recognition stuff
         // ----- START -----
         _start = false;
@@ -102,12 +110,11 @@ class RadioController: UIViewController, UITableViewDataSource{
             "Country":["WBGK 101.1 FM Newport Village"],
             "Swing":["Gorindo"],
             "Trance":["Digital Impulse"],
-            "Please No":["Don't Click Here!!!"]
+            
             
         ];
        
         radioDic = [
-            "Don't Click Here!!!":"https://https://youtu.be/x6bbqy3ef8I",
         "Met al Metal":"http://stream.laut.fm/metal-fm-com",
         "Jazzi":"http://streaming.radio.co/s774887f7b/listen",
         "Mooze":"",
@@ -120,12 +127,6 @@ class RadioController: UIViewController, UITableViewDataSource{
             
         ];
         stationDicArrKey = Array(stationDicArr.keys);
-    
-        // TEST - Dummy data
-//        // Date - get the current date and time
-//        let currentDateTime = Date();
-//        // Put song
-//        Song.createSongWith(name: "Nick", band: "Crushers", category: "toBad", favorite: false, timeRecognize: currentDateTime, lyric: "Non");
     }
     
     // Result Handler
@@ -145,7 +146,7 @@ class RadioController: UIViewController, UITableViewDataSource{
             guard let msg = status["msg"] as? String else {
                 return
             }
-            print(result) // delectus aut autem
+            print(result);
         
             if msg == "Success" {
                 guard let metadata = jsonObject["metadata"] as? [String: Any] else{
@@ -249,7 +250,6 @@ class RadioController: UIViewController, UITableViewDataSource{
         task.resume();
         return currentLyrics;
     }
-    
     // ----- END -----
     
     
@@ -297,7 +297,7 @@ class RadioController: UIViewController, UITableViewDataSource{
     // ----- END -----
     
     
-    @IBAction func scanSongAction(_ sender: Any) {
+    @IBAction func scanSongAction(_ sender: UIBarButtonItem) {
         songScan((Any).self);
         
         // Open the AlertController

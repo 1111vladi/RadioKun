@@ -27,7 +27,4 @@ class SongCell: UITableViewCell {
         timeStamp = song.time_recog;
     }
     
-    
-   
-    
 }
