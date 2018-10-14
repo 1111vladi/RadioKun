@@ -58,11 +58,6 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         cell.songLbl.textColor = theme.mainColor;
         cell.timestampLbl.textColor = theme.mainColor;
         
-        
-        // Todo fix color of buttons...
-//        cell.facebookBtn.tintColor = theme.mainColor;
-//        cell.favoriteBtn.tintColor = theme.mainColor;
-        
         tableView.separatorColor = theme.mainColor;
         
         // Set Favorite image depend on state
@@ -73,9 +68,6 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         return cell
     }
     
-    
-    
-    // TODO - Add once RecognizeController is done
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Open the ViewController when successfully recognize a song
         // to show the full details of this song (song, band & lyrics)
@@ -91,5 +83,4 @@ class HistoryController: UIViewController, UITableViewDataSource, UITableViewDel
         // This is the RecognitionController constant variable that is used for navigation
         navigationController?.pushViewController(resultController, animated: true);
     }
-    
 }

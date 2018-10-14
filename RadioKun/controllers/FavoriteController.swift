@@ -11,7 +11,6 @@ import CoreData
 
 class FavoriteController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
     let theme = ThemeManager.currentTheme();
     
     @IBOutlet weak var tableView : UITableView!;
@@ -20,20 +19,16 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.backgroundColor = theme.backgroundColor;
-        
         tableView.delegate = self
         self.controller = DBUtil.fetchedResultsFavoriteController();
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.controller = DBUtil.fetchedResultsFavoriteController(); // Get again the data of the table to update if there were any changes
         tableView.reloadData(); // Use to update the list with any change that happen in core data
     }
-    
-    
+
     
     // Table
     // ---- Start ----
@@ -43,17 +38,15 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         return controller.sections?.count ?? 0
     }
     
-   
+    
     // Group header text
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return controller.sections![section].name;
     }
-    
     // Number of linee for each group
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return controller.sections![section].numberOfObjects
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! SongFavoriteCell;
         
@@ -65,10 +58,6 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         cell.backgroundColor = theme.backgroundColor;
         cell.bandLbl.textColor = theme.mainColor;
         cell.songLbl.textColor = theme.mainColor;
-        
-        // Todo fix color of buttons...
-        //        cell.facebookBtn.tintColor = theme.secondaryColor;
-        //        cell.favoriteBtn.tintColor = theme.mainColor;
         
         // Set Favorite image depend on state
         // Filled = favorite(true), Empty = not favorite(false)

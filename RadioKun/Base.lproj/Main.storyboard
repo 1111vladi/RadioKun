@@ -34,7 +34,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lA-0U-rkj">
-                                                    <rect key="frame" x="254" y="-3.5" width="50" height="50.5"/>
+                                                    <rect key="frame" x="279" y="9.5" width="25" height="25"/>
                                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <state key="normal" image="play"/>
                                                 </button>
@@ -132,7 +132,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLe-P1-EBN">
-                                                    <rect key="frame" x="246" y="-3.5" width="25" height="50.5"/>
+                                                    <rect key="frame" x="246" y="9.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="ekb-se-gL4"/>
                                                     </constraints>
@@ -307,7 +307,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHO-Qz-Zaj">
-                                                    <rect key="frame" x="246" y="-3.5" width="25" height="50.5"/>
+                                                    <rect key="frame" x="246" y="9.5" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="Amu-kj-dCM"/>
                                                     </constraints>
@@ -439,7 +439,7 @@ CQ
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyrics" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4u-0m-Sd2">
-                                <rect key="frame" x="8" y="343" width="304" height="20.5"/>
+                                <rect key="frame" x="8" y="398" width="304" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -447,11 +447,12 @@ CQ
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="I4u-0m-Sd2" firstAttribute="top" secondItem="Nnw-f2-VNS" secondAttribute="bottom" constant="378" id="1JS-5n-San"/>
                             <constraint firstAttribute="trailing" secondItem="Yjp-gk-6Ct" secondAttribute="trailing" constant="8" id="3dt-ZA-3n3"/>
                             <constraint firstItem="I4u-0m-Sd2" firstAttribute="centerX" secondItem="tn6-ZE-pLz" secondAttribute="centerX" id="4X5-rD-lIN"/>
                             <constraint firstItem="Yjp-gk-6Ct" firstAttribute="top" secondItem="Nnw-f2-VNS" secondAttribute="bottom" constant="191" id="5zm-on-CGK"/>
+                            <constraint firstItem="E0x-Ya-gj1" firstAttribute="trailing" secondItem="Yjp-gk-6Ct" secondAttribute="trailing" id="8Sw-TW-FgO"/>
                             <constraint firstItem="E0x-Ya-gj1" firstAttribute="leading" secondItem="tn6-ZE-pLz" secondAttribute="leading" constant="8" id="ASV-DE-T28"/>
-                            <constraint firstItem="I4u-0m-Sd2" firstAttribute="top" secondItem="Nnw-f2-VNS" secondAttribute="bottom" constant="323" id="BD3-Ns-MGj"/>
                             <constraint firstAttribute="trailing" secondItem="E0x-Ya-gj1" secondAttribute="trailing" constant="8" id="HN8-zb-FSw"/>
                             <constraint firstItem="Yjp-gk-6Ct" firstAttribute="leading" secondItem="tn6-ZE-pLz" secondAttribute="leading" constant="8" id="JzE-Cf-imL"/>
                             <constraint firstAttribute="trailing" secondItem="I4u-0m-Sd2" secondAttribute="trailing" constant="8" id="OqU-DF-w44"/>
@@ -511,12 +512,12 @@ CQ
         </scene>
     </scenes>
     <resources>
-        <image name="add_favorite" width="50" height="50"/>
-        <image name="empty_star" width="50" height="50"/>
-        <image name="facebook" width="50" height="50"/>
-        <image name="history_list" width="50" height="50"/>
-        <image name="play" width="50" height="50"/>
-        <image name="radio" width="50" height="50"/>
-        <image name="scan_song" width="75" height="75"/>
+        <image name="add_favorite" width="25" height="25"/>
+        <image name="empty_star" width="25" height="25"/>
+        <image name="facebook" width="25" height="25"/>
+        <image name="history_list" width="25" height="25"/>
+        <image name="play" width="25" height="25"/>
+        <image name="radio" width="25" height="25"/>
+        <image name="scan_song" width="37" height="37"/>
     </resources>
 </document>

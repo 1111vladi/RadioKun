@@ -8,10 +8,35 @@
 
 import UIKit
 import AVFoundation
+import Lottie
 
 class RadioController: UIViewController, UITableViewDataSource{
     
   
+    //    @IBOutlet weak var recordLabel: UIBarButtonItem!{
+    //        didSet {
+    //            let icon = UIImage(named: "recordb");
+    //            let iconSize = CGRect(x: 0, y: 0, width: 35, height: 35);
+    //            let iconButton = UIButton(frame: iconSize);
+    //            iconButton.setBackgroundImage(icon, for: .normal);
+    //            recordLabel.customView = iconButton;
+    //
+    //            recordLabel.customView!.transform = CGAffineTransform(scaleX: 0, y: 0)
+    //
+    //            UIView.animate(withDuration: 1.0,
+    //                                       delay: 0.5,
+    //                                       usingSpringWithDamping: 0.5,
+    //                                       initialSpringVelocity: 10,
+    //                                       options: .curveLinear,
+    //                                       animations: {
+    //                                        self.recordLabel.customView!.transform = CGAffineTransform.identity
+    //            },
+    //                                       completion: nil
+    //            )
+    //    }
+    //
+    //}
+
     // Global UIAlert
     private var alert : UIAlertController? = nil;
     private var alert2 : UIAlertController? = nil;
@@ -41,7 +66,7 @@ class RadioController: UIViewController, UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        
+
         // Recognition stuff
         // ----- START -----
         _start = false;
@@ -82,6 +107,7 @@ class RadioController: UIViewController, UITableViewDataSource{
             "Swing":["Gorindo"],
             "Trance":["Digital Impulse"],
             
+            
         ];
        
         radioDic = [
@@ -92,17 +118,11 @@ class RadioController: UIViewController, UITableViewDataSource{
         "WDAV Classica":"http://audio-mp3.ibiblio.org:8000/wdav-24k",
         "Jewish Rock":"http://sc11.spacialnet.com/stream/2554/",
         "Gorindo":"http://streaming.radionomy.com/Gorindo?lang=en-US&appName=iTunes.m3u",
-        "Digital Impulse":"http://5.39.71.159:8554/;stream;",
-        "WBGK 101.1 FM Newport Village":"http://ice6.securenetsystems.net/WBGK"
+            
+            self.findLyrics("Poison", "Alice Cooper", "Rock"); // TEST
             
         ];
         stationDicArrKey = Array(stationDicArr.keys);
-    
-        // TEST - Dummy data
-//        // Date - get the current date and time
-//        let currentDateTime = Date();
-//        // Put song
-//        Song.createSongWith(name: "Nick", band: "Crushers", category: "toBad", favorite: false, timeRecognize: currentDateTime, lyric: "Non");
     }
     
     // Result Handler
@@ -130,10 +150,10 @@ class RadioController: UIViewController, UITableViewDataSource{
                     return
                 }
                 guard let music = metadata["music"] as? [[String: Any]] else {
-                    return
-                }
+               
+                self.findLyrics(title, name, genreName);
                 
-                // Band Name
+                
                 guard let artists = music[0]["artists"] as? [[String: Any]] else {
                     return
                 }
@@ -209,6 +229,8 @@ class RadioController: UIViewController, UITableViewDataSource{
                 self.scanDone(songName: songName, bandName: bandName, lyric: lyrics, genreName: genreName);
             }
             
+            currentLyrics = lyrics;
+            print(String(data: data, encoding: .utf8)!)
         } // End result scope - EVERYTHING DIIIEEEES
 
         task.resume();
@@ -260,7 +282,7 @@ class RadioController: UIViewController, UITableViewDataSource{
     // ----- END -----
     
     
-    @IBAction func scanSongAction(_ sender: Any) {
+    @IBAction func scanSongAction(_ sender: UIBarButtonItem) {
         songScan((Any).self);
         
         // Open the AlertController
