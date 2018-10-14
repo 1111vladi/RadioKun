@@ -8,8 +8,21 @@
 
 import UIKit
 import AVFoundation
+import Lottie
 
 class RadioController: UIViewController, UITableViewDataSource{
+    
+
+    
+            
+        
+    
+    
+    
+    
+    
+    // Record Animation
+//    var animation = LOTAnimationView(name: "record");
     
     // Apikey for Lyrics
     private let apikey = "Tk7IikwaoN12CkCV1wocicLSsWntNT5e3DvGPidvtKk63kK4iakesZNc6smFVfDc";
@@ -43,6 +56,12 @@ class RadioController: UIViewController, UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        
+//        animation.frame = CGRect(x: -35, y: 40, width: 75, height: 75);
+//        animation.contentMode = .scaleAspectFill;
+//        animation.loopAnimation = true;
+//        view.addSubview(animation);
+//        animation.play();
         
         // Recognition stuff
         // ----- START -----
@@ -83,10 +102,12 @@ class RadioController: UIViewController, UITableViewDataSource{
             "Country":["WBGK 101.1 FM Newport Village"],
             "Swing":["Gorindo"],
             "Trance":["Digital Impulse"],
+            "Please No":["Don't Click Here!!!"]
             
         ];
        
         radioDic = [
+            "Don't Click Here!!!":"https://https://youtu.be/x6bbqy3ef8I",
         "Met al Metal":"http://stream.laut.fm/metal-fm-com",
         "Jazzi":"http://streaming.radio.co/s774887f7b/listen",
         "Mooze":"",
@@ -220,7 +241,7 @@ class RadioController: UIViewController, UITableViewDataSource{
             guard let lyrics = track["text"] as? String else {
                 return
             }
-
+            
             currentLyrics = lyrics;
             print(String(data: data, encoding: .utf8)!)
         } // End result scope - EVERYTHING DIIIEEEES
@@ -228,6 +249,7 @@ class RadioController: UIViewController, UITableViewDataSource{
         task.resume();
         return currentLyrics;
     }
+    
     // ----- END -----
     
     
