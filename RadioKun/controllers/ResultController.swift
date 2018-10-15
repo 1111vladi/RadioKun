@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ResultController: UIViewController {
+class ResultController: UIViewController, UIScrollViewDelegate {
     
+ 
     @IBOutlet weak var lyricsLabel: UILabel!
     @IBOutlet weak var bandLabel: UILabel!{
         didSet{
@@ -18,7 +19,7 @@ class ResultController: UIViewController {
             bandLabel.makeOutLine(oulineColor: UIColor.black, foregroundColor: UIColor.white)
         }
     }
-    @IBOutlet weak var lyricList: UITextView!
+    
     
     @IBOutlet weak var songLabel: UILabel!{
         didSet{
@@ -33,16 +34,25 @@ class ResultController: UIViewController {
     public var songName = "";
     public var genreName = "";
     
+    
     // Theme manager to manage all colors type of each section
     let theme = ThemeManager.currentTheme();
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         self.view.backgroundColor = theme.backgroundColor;
 
-        lyricList.font = UIFont(name: "ArialRoundedMTBold", size: 20);
-        lyricList.textColor = UIColor.white;
-        lyricList?.text = lyricsName;
+        lyricsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20);
+        lyricsLabel.textColor = UIColor.white;
+        lyricsLabel?.text = lyricsName;
+        
+        
+        
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        
         
     }
     
@@ -66,4 +76,5 @@ extension UILabel{
             attributedText = attributedString
         }
     }
+
 }

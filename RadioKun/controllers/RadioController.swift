@@ -219,6 +219,7 @@ class RadioController: UIViewController, UITableViewDataSource{
             DispatchQueue.main.async() {
                 // Once the results are right and everything works, finish the scan and open ResultController
                 self.scanDone(songName: songName, bandName: bandName, lyric: lyrics, genreName: genreName);
+                print(lyrics);
             }
            
         } // End result scope - EVERYTHING DIIIEEEES
