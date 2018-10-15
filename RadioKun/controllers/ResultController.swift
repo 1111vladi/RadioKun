@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ResultController: UIViewController, UIScrollViewDelegate {
+class ResultController: UIViewController {
     
  
-    @IBOutlet weak var lyricsLabel: UILabel!
+    
+    @IBOutlet weak var lyricsText: UITextView!
+//    @IBOutlet weak var lyricsLabel: UILabel!
     @IBOutlet weak var bandLabel: UILabel!{
         didSet{
             bandLabel?.text = bandName;
@@ -43,30 +45,27 @@ class ResultController: UIViewController, UIScrollViewDelegate {
         
         
         self.view.backgroundColor = theme.backgroundColor;
-
-        lyricsLabel.font = UIFont(name: "ArialRoundedMTBold", size: 20);
-        lyricsLabel.textColor = UIColor.white;
-        lyricsLabel?.text = lyricsName;
-        
-        
+        self.lyricsText.backgroundColor = theme.backgroundColor;
+        lyricsText.font = UIFont(name: "ArialRoundedMTBold", size: 16);
+        lyricsText.textColor = UIColor.white;
+        self.lyricsText?.text = lyricsName;
         
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        
-        
+    
     }
-    
-}
 
+
+
+}
 extension UILabel{
     // Stroke effect
     func makeOutLine(oulineColor: UIColor, foregroundColor: UIColor) {
         let strokeTextAttributes = [
             NSAttributedString.Key.strokeColor : oulineColor,
-        NSAttributedString.Key.foregroundColor : foregroundColor,
-        NSAttributedString.Key.strokeWidth : -4.0,
-        NSAttributedString.Key.font : self.font
-        ] as [NSAttributedString.Key : Any]
+            NSAttributedString.Key.foregroundColor : foregroundColor,
+            NSAttributedString.Key.strokeWidth : -4.0,
+            NSAttributedString.Key.font : self.font
+            ] as [NSAttributedString.Key : Any]
         self.attributedText = NSMutableAttributedString(string: self.text ?? "", attributes: strokeTextAttributes)
     }
     // UnderLine effect
@@ -76,5 +75,5 @@ extension UILabel{
             attributedText = attributedString
         }
     }
-
+    
 }

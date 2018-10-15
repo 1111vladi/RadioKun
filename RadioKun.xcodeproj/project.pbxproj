@@ -27,6 +27,7 @@
 		75394A8B21726E9300643B76 /* record.json in Resources */ = {isa = PBXBuildFile; fileRef = 75394A8A21726E9300643B76 /* record.json */; };
 		75394A8D21726EA300643B76 /* favourite.json in Resources */ = {isa = PBXBuildFile; fileRef = 75394A8C21726EA300643B76 /* favourite.json */; };
 		753CBD8D216A5589002B4D6F /* ResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753CBD8C216A5589002B4D6F /* ResultController.swift */; };
+		758CFF342174A5A1003C75F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 758CFF332174A5A1003C75F9 /* Main.storyboard */; };
 		A24E360E1D5B74F600C98C28 /* LICENSE.MD in Sources */ = {isa = PBXBuildFile; fileRef = A24E360D1D5B74F600C98C28 /* LICENSE.MD */; };
 		A2D968871CA512B0009618E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D968861CA512B0009618E1 /* AppDelegate.swift */; };
 		A2D9688E1CA512B0009618E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2D9688D1CA512B0009618E1 /* Assets.xcassets */; };
@@ -61,6 +62,7 @@
 		75394A8A21726E9300643B76 /* record.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = record.json; sourceTree = "<group>"; };
 		75394A8C21726EA300643B76 /* favourite.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = favourite.json; sourceTree = "<group>"; };
 		753CBD8C216A5589002B4D6F /* ResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultController.swift; sourceTree = "<group>"; };
+		758CFF332174A5A1003C75F9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A24E360D1D5B74F600C98C28 /* LICENSE.MD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.MD; sourceTree = "<group>"; };
 		A2D968831CA512AF009618E1 /* RadioKun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioKun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2D968861CA512B0009618E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				03FF7DFE21614DE4004D3C5D /* model */,
 				03FF7E0321618256004D3C5D /* view */,
 				A24E360D1D5B74F600C98C28 /* LICENSE.MD */,
+				758CFF332174A5A1003C75F9 /* Main.storyboard */,
 				A2D9688D1CA512B0009618E1 /* Assets.xcassets */,
 				A2D9688F1CA512B0009618E1 /* LaunchScreen.storyboard */,
 				A2D968921CA512B0009618E1 /* Info.plist */,
@@ -266,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				758CFF342174A5A1003C75F9 /* Main.storyboard in Resources */,
 				75394A8721726E0E00643B76 /* playpause.json in Resources */,
 				75394A8B21726E9300643B76 /* record.json in Resources */,
 				75394A8D21726EA300643B76 /* favourite.json in Resources */,
